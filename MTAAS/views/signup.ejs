@@ -161,6 +161,7 @@
 
 //Validation for fields not empty
 
+
             if (in_fname == null || in_fname == "")
             {
                 alert("Enter first name!!");
@@ -181,6 +182,11 @@
             if (in_name == null || in_name == "")
             {
                 alert("Enter Username");
+                return;
+            }
+            if (in_phone == null || in_phone == "")
+            {
+                alert("Enter first name!!");
                 return;
             }
 
@@ -204,13 +210,11 @@
             }).
             then(function(response) {
 
-                //$window.location.href = '/index';
+                $window.location.href = '/login';
             });
         }
 
-        $scope.testerdetail=function(){
-            $http.get('/login');
-        }
+
 
     }]);
     </script>

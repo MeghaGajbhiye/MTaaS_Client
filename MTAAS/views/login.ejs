@@ -153,21 +153,22 @@
  var app=angular.module('MtaaS', [])
  app.controller('MtaaS', ['$scope', '$http', '$window', '$timeout',function ( $scope,$http,$window)
  {
-/*
- $http({
- method: 'GET',
- url: '/checklogin'
- }).
- then(function(response)
- {
- 	if(response.data.status===200)
- 	{
- 	$window.location.href='/home';
- 	}
 
- });
+/*
+     $http({
+         method: 'GET',
+         url: '/checksession'
+     }).
+     then(function(response)
+     {
+         if(response.data.status===200)
+         {
+             window.location.href='/testerinfo';
+         }
+
+     });
  */
-$scope.signin = function (){
+ $scope.signin = function (){
 				alert($scope.name);
 				//alert($scope.password);
 				var in_name = $scope.name;
@@ -196,11 +197,19 @@ $scope.signin = function (){
 			        }).
 			          then(function(response) {
 
-			              alert("I am here near testerinfo");
-			        	  window.location.href = '/testerinfo';
-                    /*      $timeout(function(){
+                    if(response.data.status===100)
+                    {
+                        window.location.href='/testerdashboard';
+                    }
+                    else if(response.data.status==101)
+                    {
+                        window.location.href='/testerinfo';
+                    }
+                    else if(response.data.status == 102)
+                    {
+                        alert("Invalid Username and Password");
 
-                          },3000)*/
+                    }
 
 			          }); 
 

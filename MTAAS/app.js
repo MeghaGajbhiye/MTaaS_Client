@@ -40,10 +40,11 @@ app.get('/login', user.login);
 app.get('/shwsignup', user.showsignup);
 app.get('/shwsignupd', user.showsignupd);
 app.get('/terms', user.terms);
+app.get('/username',user.username );
 app.get('/testerdetail', user.testerdetail);
 //app.get('/logout', user.logout);
 app.get('/home1', user.home);
-//app.get('/checklogin', user.checklogin);
+app.get('/checksession', user.checksession);
 //app.get('/emails', user.emails);
 
 app.get('/developerdashboard',user.developerdashboard);

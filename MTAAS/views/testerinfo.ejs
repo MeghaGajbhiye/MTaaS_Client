@@ -47,6 +47,7 @@
             </button>
             <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
             <a class="navbar-brand" href="index.html">Testify</a>
+
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -345,6 +346,52 @@
     var app=angular.module('MtaaS', [])
     app.controller('MtaaS', ['$scope', '$http', '$window', function ( $scope,$http,$window)
     {
+
+        $http({
+            method: 'GET',
+            url: '/username'
+
+        }).
+        then(function(response) {
+            //alert(response.data.result);
+            $scope.loginusername = angular.fromJson(response.data.result);
+
+        });
+
+        /*
+        $http({
+            method: 'GET',
+            url: '/checksession'
+        }).
+        then(function(response)
+        {
+            if(response.data.status===200)
+            {
+                window.location.href='/';
+            }
+
+        });
+*/
+        $scope.logoutsession= function () {
+            //alert("in logout session");
+            $http({
+                method: 'GET',
+                url: '/logoutsession'
+            }).
+            then(function(response)
+            {
+                if(response.data.status===300)
+                {
+                    console.log("destroy session");
+                }else
+                {
+                    $window.location.href='/';
+                }
+            });
+        }
+
+
+
         alert("I am in controller");
         $scope.testing = {
             functional: '',
@@ -376,8 +423,14 @@
                 data: {"experience": in_experience, "testingtype": in_testing, "testingtool": in_tool, "language": in_language}
             }).
             then(function (response) {
-                $window.location.href = '/index';
-            });
+                if(response.data.status===100)
+                {
+                    window.location.href='/testerdashboard';
+                }
+                else {
+                    window.location.href = '/testerinfo';
+                }
+                });
 
 
             alert("i am here after http");

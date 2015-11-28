@@ -13,8 +13,8 @@ res.send({"status":200});
 };
 	
 
-/*MAINTAINING SESSION LOGIN
-exports.checklogin = function(req, res){
+//MAINTAINING SESSION LOGIN
+exports.checksession = function(req, res){
 	console.log("checking session");
 	console.log(req.session.uname);
 	  if(req.session.uname)
@@ -28,8 +28,26 @@ exports.checklogin = function(req, res){
 		  }
 	};
 
-*/
 
+//login info
+
+exports.username = function(req, res){
+	console.log(req.session.uname);
+	var myquery = "select * from smsm_login where username = '"+req.session.uname+"'";
+	mysql.fetchData(function(err, results) {
+		if (err) {
+			throw err;
+		} else {
+			console.log(results);
+			var jsonstr=JSON.stringify(results);
+			console.log(jsonstr);
+			console.log("Entry successfully fethced and displayed on GUI");
+			//res.send(JSON.stringify(results));
+			res.send({"result":jsonstr});
+		}
+	}, myquery);
+
+};
 
 exports.testerdetail = function(req, res) {
 
@@ -40,18 +58,16 @@ exports.testerdetail = function(req, res) {
 	var testingTool = req.param("testingtool");
 	var language = req.param("language");
 
-	var myquery = "insert into smsm_testerinfo(profile_id,tester_experience,testing_type,testing_tool,testing_language) values (550001,'"+testerExperience+"','" + testingType + "','" + testingTool + "','" + language + "')";
-
+	var myquery = "insert into smsm_testerinfo(username,tester_experience,testing_type,testing_tool,testing_language) values ('"+req.session.uname+"','"+testerExperience+"','" + testingType + "','" + testingTool + "','" + language + "')";
 	mysql.fetchData(function(err, results) {
 		if (err) {
 			throw err;
+		} else {
+			console.log("Entry successfully made in suppliersignup table");
 		}
-		else {
-			console.log("I am here in testerdetail function");
-			res.render('index');
-		}
-	},myquery);
-		};
+	}, myquery);
+};
+
 exports.list = function(req, res){
   res.send("respond with a resource");
 };
@@ -114,7 +130,8 @@ exports.showsignup = function(req, res){
 		var name = req.param("name");
 		var password = req.param("password");
 		
-		var myquery = "Select * from SMSM_Login where username = '"+name+"'and password='"+password+"' ";
+		var myquery = "Select * from  smsm_login_tester where username = '"+name+"'and password='"+password+"' ";
+
 
 		mysql.fetchData(function(err,results){
 					if(err)
@@ -122,19 +139,36 @@ exports.showsignup = function(req, res){
 							throw err;
 						}
 					else
-						{
-						if(results.length > 0)
+					{
+						req.session.uname = results[0].username;
+						var jsonstr=JSON.stringify(results);
+						if(jsonstr.length > 0)
 							{
-							req.session.uname = results[0].username;
-							console.log("success signin ***************************************************");
 
-							res.render('testerinfo');
-								console.log("after render ***************************************************");
+
+								var myquery1 = "Select tester_experience from  smsm_login_tester where username = '"+name+"'";
+								mysql.fetchData(function(err,results) {
+									if (err) {
+										throw err;
+									}
+									else {
+										var jsonstr1=JSON.stringify(results);
+										if (jsonstr1.tester_experience!= null) {
+											console.log("Test:" + jsonstr1);
+											res.send({"status": 100});
+										}
+										else {
+											res.send({"status": 101});
+										}
+									}
+								},myquery1);
+
+								console.log("after second query ***************************************************");
 							}
 						else
 							{
 							console.log("Invalid User Name & Password");
-							res.send({"status":100});	
+							res.send({"status":102});
 							}
 
 						}
@@ -159,17 +193,16 @@ exports.showsignup = function(req, res){
 				var zip = req.param("zip");
 				var linkedin = req.param("linkedin");
 
-				var myquery = "insert into smsm_login(username,password,email,First_Name,Middle_Name,Last_Name,Country,Phone,State, Address1, Address2, zip, linkedin_profile, active) values ('" + name + "','" + password + "','" + email + "','" + fname + "','" + mname + "','" + lname + "','" + country + "','" + phone + "','" + state + "','" + address1 + "','" + address2 + "','" + zip + "','" + linkedin + "','y')";
+				var myquery = "insert into smsm_login_tester(username,password,email,First_Name,Middle_Name,Last_Name,Country,Phone,State, Address1, Address2, zip, linkedin_profile, active) values ('" + name + "','" + password + "','" + email + "','" + fname + "','" + mname + "','" + lname + "','" + country + "','" + phone + "','" + state + "','" + address1 + "','" + address2 + "','" + zip + "','" + linkedin + "','y')";
 				
 				mysql.fetchData(function(err, results) {
 					if (err) {
 						throw err;
 					} else {
 
-						res.render('login');
-
-						
 						console.log("Entry successfully made in testersignup table");
+							res.render('login');
+
 					}
 				}, myquery);
 				
