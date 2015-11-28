@@ -104,17 +104,9 @@
                                             Linkedin Profile  <input type="text" placeholder="Linked profile" ng-model="linkedin"/><br><br>
                                             Password  <input type="password" placeholder="Password" ng-model="password"/><br><br>
                                             Confirm Password  <input type="password" placeholder="Confirm Password" ng-model="cpassword"/><label></label></label><br><br>
-                                            <button type="submit" class="btn btn-default" ng-click="signup()">Sign UP</button>
+                                            <button type="submit" class="btn btn-default" ng-click="signup()">SIGN UP</button>
                                         </form>
-                                        <br><br>
-                                        <form action="#">
-                                            <label>Login as: </label>
-                                            <br><br><br>
-                                            <a href="/testerdetail.ejs" >Tester</a>
-                                            <br><br>
-                                            <a href="#" ng-click="customersignup()">Customer</a>
-                                            <br><br>
-                                        </form>
+
                                     </div><!--/login form-->
                                 </div>
 
@@ -212,13 +204,14 @@
             }).
             then(function(response) {
 
-                $window.location.href = '/index';
+                //$window.location.href = '/index';
             });
         }
 
         $scope.testerdetail=function(){
-            $window.location.href = '/testerdetail';
+            $http.get('/login');
         }
+
     }]);
     </script>
 </body>

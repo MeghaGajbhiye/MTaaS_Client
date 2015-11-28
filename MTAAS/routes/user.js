@@ -127,7 +127,9 @@ exports.showsignup = function(req, res){
 							{
 							req.session.uname = results[0].username;
 							console.log("success signin ***************************************************");
-							//res.render('index');
+
+							res.render('testerinfo');
+								console.log("after render ***************************************************");
 							}
 						else
 							{
@@ -164,7 +166,7 @@ exports.showsignup = function(req, res){
 						throw err;
 					} else {
 
-						res.render('index');
+						res.render('login');
 
 						
 						console.log("Entry successfully made in testersignup table");

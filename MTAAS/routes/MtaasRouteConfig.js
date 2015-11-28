@@ -86,6 +86,19 @@ MtaasRouteConfig.prototype.addRoutes = function () {
             response.render('testerinfo', { title : "Create Product Category" });
         }
     });
+
+    self.routeTable.push({
+
+        requestType : 'get',
+        requestUrl : '/login',
+        callbackFunction : function (request, response) {
+
+            response.render('login', { title : "Create Product Category" });
+        }
+    });
+
+
+
 }
 
 module.exports = MtaasRouteConfig;

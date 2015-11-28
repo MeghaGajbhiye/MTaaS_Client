@@ -66,7 +66,7 @@
                         <a href="contact.html">Contact</a>
                     </li>
                     <li>
-                        <a href="#" ng-click="login()">Login</a>
+                        <a href=/login>Login</a>
                     </li>
 
                 </ul>
@@ -176,7 +176,7 @@
 
     <!-- Script to Activate the Carousel -->
     <script>
-           
+
     var app=angular.module('MtaaS', [])
  app.controller('MtaaS', ['$scope', '$http', '$window', function( $scope,$http,$window)
  {
@@ -184,8 +184,8 @@
 		{
 	   $window.location.href = '/login';
 		}
-	
-  }]);   
+
+  }]);
        
     $('.carousel').carousel({
         interval: 5000 //changes the speed

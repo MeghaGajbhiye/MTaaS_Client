@@ -113,7 +113,7 @@
                                             <br><br><br>
                                             Sign up as:
                                             <br><br>
-                                            <a href=/testerinfo >Tester</a>
+                                            <a href=/signup >Tester</a>
                                             <br><br>
                                             <a href=/customerdetail ng-click="customersignup()">Customer</a>
 
@@ -151,7 +151,7 @@
 
 <script>
  var app=angular.module('MtaaS', [])
- app.controller('MtaaS', ['$scope', '$http', '$window', function ( $scope,$http,$window)
+ app.controller('MtaaS', ['$scope', '$http', '$window', '$timeout',function ( $scope,$http,$window)
  {
 /*
  $http({
@@ -195,14 +195,13 @@ $scope.signin = function (){
 			      	  data: {"name":in_name,"password":in_password}
 			        }).
 			          then(function(response) {
-			          if(response.data.status == 100)
-			          {
-			          	alert("Invalid User and Password!");
-			          }
-			          else
-			          {
-			        	  $window.location.href = '/testerdetail';
-			          }
+
+			              alert("I am here near testerinfo");
+			        	  window.location.href = '/testerinfo';
+                    /*      $timeout(function(){
+
+                          },3000)*/
+
 			          }); 
 
 }
