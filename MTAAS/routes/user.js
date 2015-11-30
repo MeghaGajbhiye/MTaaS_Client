@@ -1,4 +1,5 @@
 var mysql = require('./mysql');
+var customer_search;
 /*
  * GET users listing.
  */
@@ -94,6 +95,31 @@ exports.customerdetails = function(req, res){
 	mysql.fetchData(function(err,results){
 				if(!err){
 					console.log(results);
+					customer_search=results[0].customer_username;
+					console.log("customer_search" + customer_search);
+
+					var jsonstr=JSON.stringify(results);
+					console.log("Successfully Fetched");
+					res.send({"result":JSON.stringify(results)});
+				}
+				else {
+					console.log(err);
+				}
+			}
+			,getUser);
+};
+
+//fetch for test
+
+exports.customerinfo = function(req, res){
+
+	var getUser="select * from smsm_customer_info where username='"+customer_search+"'";
+
+	console.log("Query is: i am here inside customerinfo");
+	console.log("Query is:"+getUser);
+	mysql.fetchData(function(err,results){
+				if(!err){
+					console.log(results);
 					var jsonstr=JSON.stringify(results);
 					console.log("Successfully Fetched");
 					res.send({"result":JSON.stringify(results)});
@@ -151,6 +177,10 @@ exports.customerdetail = function(req, res) {
 	res.render('customerdetail');
 };
 
+exports.customerview = function(req, res) {
+	res.render('customerview');
+};
+
 
 //LOGIN PAGE
 exports.signin = function(req, res){
@@ -168,7 +198,9 @@ exports.signin = function(req, res){
 		else
 		{
 			if(results.length > 0)
+
 			{
+				req.session.uname = results[0].username;
 				var role= results[0].role;
 				if(role == 'tester')
 				{
@@ -433,6 +465,23 @@ exports.developersignup = function(req, res) {
 	   
 	   
 	   	};
-	   	
-	   	
+
+exports.sendrequest = function(req, res){
+
+	console.log("Entry successfullymade in sendrequest");
+
+	var myquery = "update app_info set tester_request = concat(tester_request, ' "+req.session.uname+"') where customer_username = '"+customer_search+"'";
+
+	mysql.fetchData(function(err, results) {
+		if (err) {
+			throw err;
+		} else {
+			console.log("Entry successfully made in login table");
+
+			res.render('searchcustomer');
+		}
+	}, myquery);
+
+
+};
 	   	

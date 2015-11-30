@@ -141,6 +141,16 @@ MtaasRouteConfig.prototype.addRoutes = function () {
         }
     });
 
+    self.routeTable.push({
+
+        requestType : 'get',
+        requestUrl : '/customerview',
+        callbackFunction : function (request, response) {
+
+            response.render('customerview', { title : "Create Product Category" });
+        }
+    });
+
 
 }
 
