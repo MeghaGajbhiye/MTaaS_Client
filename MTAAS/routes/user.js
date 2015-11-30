@@ -34,7 +34,7 @@ exports.checksession = function(req, res){
 
 exports.username = function(req, res){
 	console.log(req.session.uname);
-	var myquery = "select * from smsm_login_tester where username = '"+req.session.uname+"'";
+	var myquery = "select * from smsm_login_tester where username = '"+req.session.uname+"' and status = 'pending'";
 	mysql.fetchData(function(err, results) {
 		if (err) {
 			throw err;
@@ -110,6 +110,52 @@ exports.customerdetails = function(req, res){
 };
 
 //fetch for test
+
+
+
+
+exports.currentapp = function(req, res){
+
+	var getUser="select * from app_info where tester_username='"+req.session.uname+"'";
+
+	console.log("Query is: i am here inside currentapp");
+	console.log("Query is:"+getUser);
+	mysql.fetchData(function(err,results){
+				if(!err){
+					console.log(results);
+					var jsonstr=JSON.stringify(results);
+					console.log("Successfully Fetched");
+					res.send({"result":JSON.stringify(results)});
+				}
+				else {
+					console.log(err);
+				}
+			}
+			,getUser);
+};
+
+
+exports.testerinfo = function(req, res){
+	console.log("uname is:"+ req.session.uname);
+	var getUser="select * from smsm_tester_info where username='"+req.session.uname+"'";
+
+	console.log("Query is: i am here inside testerinfo");
+	console.log("Query is:"+getUser);
+	mysql.fetchData(function(err,results){
+				if(!err){
+					console.log(results);
+					var jsonstr=JSON.stringify(results);
+					console.log("Successfully Fetched");
+					res.send({"result":JSON.stringify(results)});
+				}
+				else {
+					console.log(err);
+				}
+			}
+			,getUser);
+};
+
+
 
 exports.customerinfo = function(req, res){
 

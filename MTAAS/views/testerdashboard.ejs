@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,7 +71,7 @@
     <!-- /.container -->
 </nav>
 
-<div class="container">
+<div class="container" data-ng-app="MtaaS" data-ng-controller="MtaaS1">
 
     <div class="row">
         <div class="box">
@@ -80,57 +81,52 @@
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                        <div class="container">
+                        <div class="container" ng-repeat="t in tester">
                             <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="panel panel-primary">
+                                <div class="col-sm-3" >
+                                    <div class="panel panel-primary" >
                                         <div class="panel-heading">
-                                            <a href=/testerprofile style="color: #ffffff" class="text-center">Profile<span class="glyphicon glyphicon-user pull-right"></span></a>
+                                            <b><a href=/testerprofile style="color: #ffffff" class="text-center" font-size="9"  >Profile<span class="glyphicon glyphicon-user pull-right"></span></a></b>
                                         </div>
                                         <div class="panel-body text-center">
                                             <p class="lead">
-                                                <strong>Mike Smith</strong>
+                                                <strong>{{t.username}}</strong>
                                             </p>
                                         </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item liitem"><strong>Position:</strong>
-                                                <span class="pull-right">Developer</span>
+                                        <!--ul class="list-group list-group-flush">
+                                            <li class="list-group-item liitem"><strong>No. Of apps : </strong>
+                                                <span class="pull-right">{{t.}}</span>
                                             </li>
-                                            <li class="list-group-item liitem"><strong>Company:</strong>
-                                                <span class="pull-right">EasyTech</span>
+                                            <li class="list-group-item liitem"><strong>Testing Technology :</strong>
+                                                <span class="pull-right">{{t.testing_technology}}</span>
                                             </li>
-                                            <li class="list-group-item liitem"><strong>Department:</strong>
-                                                <span class="pull-right">Dataviz</span>
+                                            <li class="list-group-item liitem"><strong>Language :</strong>
+                                                <span class="pull-right">{{t.language}}</span>
                                             </li>
                                             <li class="list-group-item liitem"><strong>Project Duration:</strong>
                                                 <span class="pull-right">12 months</span>
                                             </li>
-                                        </ul>
+                                        </ul-->
 
                                     </div>
 
                                     <div class="panel panel-primary">
                                         <div class="panel-heading">
-                                            <h4 class="text-center">Perfromance Summary</h4>
+                                            <h4 class="text-center">Performance Summary</h4>
                                         </div>
                                         <div class="panel-body text-center">
                                             <p class="lead">
-                                                <strong>Mike Smith</strong>
+                                                <strong>Ratings:</strong>
                                             </p>
                                         </div>
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item liitem"><strong>Position:</strong>
-                                                <span class="pull-right">Developer</span>
+                                            <li class="list-group-item liitem"><strong>Manager Average Rating:</strong>
+                                                <span class="pull-right">5</span>
                                             </li>
-                                            <li class="list-group-item liitem"><strong>Company:</strong>
-                                                <span class="pull-right">EasyTech</span>
+                                            <li class="list-group-item liitem"><strong>Customer Average Rating:</strong>
+                                                <span class="pull-right">6</span>
                                             </li>
-                                            <li class="list-group-item liitem"><strong>Department:</strong>
-                                                <span class="pull-right">Dataviz</span>
-                                            </li>
-                                            <li class="list-group-item liitem"><strong>Project Duration:</strong>
-                                                <span class="pull-right">12 months</span>
-                                            </li>
+
                                         </ul>
 
                                     </div>
@@ -200,29 +196,34 @@
                                 <div class="col-sm-3">
 
 
-                                    <div class="panel panel-primary">
+                                    <div class="panel panel-primary" >
                                         <div class="panel-heading">
-                                            <h4 class="text-center">Current App List</h4>
+                                            <b><a href=/currentapplist style="color: #ffffff" class="text-center" font-size="9">Current App List</a></b>
+
+                                            <!--h4 class="text-center">Current App List</h4-->
                                         </div>
                                         <div class="panel-body text-center">
-                                            <p class="lead">
+                                            <!--p class="lead">
                                                 <strong>Mike Smith</strong>
-                                            </p>
+                                            </p-->
+                                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                                                <thead>
+                                                <tr class="success">
+                                                    <th>Index</th>
+                                                    <th>Customer Name</th>
+                                                    <th>App Name</th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="c in currentapp">
+                                                    <td>{{index+1}}.</td>
+                                                    <td><a href=/workingenvironment target="_blank">{{c.customer_username}}</a></td>
+                                                    <td>{{c.app_name}}</td>
+                                                                                                    </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item liitem"><strong>Position:</strong>
-                                                <span class="pull-right">Developer</span>
-                                            </li>
-                                            <li class="list-group-item liitem"><strong>Company:</strong>
-                                                <span class="pull-right">EasyTech</span>
-                                            </li>
-                                            <li class="list-group-item liitem"><strong>Department:</strong>
-                                                <span class="pull-right">Dataviz</span>
-                                            </li>
-                                            <li class="list-group-item liitem"><strong>Project Duration:</strong>
-                                                <span class="pull-right">12 months</span>
-                                            </li>
-                                        </ul>
 
                                     </div>
 
@@ -314,9 +315,47 @@
         </div>
     </div>
 </div>
+<script>
 
+    var app=angular.module('MtaaS', []);
+    app.controller('MtaaS1', ['$scope', '$http', '$window', function ( $scope,$http,$window)
+    {
+        alert("i am inside controller");
+
+        $scope.currentapp = function() {
+            $http({
+                method: 'GET',
+                url: '/currentapp'
+            }).success(function(response){
+                alert(JSON.stringify(response));
+                $scope.currentapp= JSON.parse(response.result);
+                //alert(processes.suppliername);
+            }).error(function(error){
+                alert("ERROR VIEWING PROCESS REQUEST");
+            });
+        };
+        $scope.currentapp();
+
+
+        $scope.testerinfo = function() {
+        alert("I am inside testerinfo");
+
+            $http({
+                method: 'GET',
+                url: '/testerinfo',
+            }).success(function(response){
+                alert(JSON.stringify(response));
+                $scope.tester= JSON.parse(response.result);
+                //alert(processes.suppliername);
+            }).error(function(error){
+                alert("ERROR VIEWING PROCESS REQUEST");
+            });
+        };
+        $scope.testerinfo();
+
+    }]);
+</script>
 
 </body>
 
-</body>
 </html>

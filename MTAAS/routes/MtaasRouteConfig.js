@@ -152,6 +152,27 @@ MtaasRouteConfig.prototype.addRoutes = function () {
     });
 
 
+    self.routeTable.push({
+
+        requestType : 'get',
+        requestUrl : '/currentapplist',
+        callbackFunction : function (request, response) {
+
+            response.render('currentapplist', { title : "Create Product Category" });
+        }
+    });
+
+    self.routeTable.push({
+
+        requestType : 'get',
+        requestUrl : '/workingenvironment',
+        callbackFunction : function (request, response) {
+
+            response.render('workingenvironment', { title : "Create Product Category" });
+        }
+    });
+
+
 }
 
 module.exports = MtaasRouteConfig;

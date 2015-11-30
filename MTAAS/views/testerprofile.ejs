@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,15 +11,17 @@
 
     <title>Business Casual - Start Bootstrap Theme</title>
 
+    <!-- Bootstrap Core CSS -->
+    <!-- link href="css/bootstrap.min.css" rel="stylesheet" -->
 
-    <link href="../css/bootstrap.css" rel="stylesheet">
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/business-casual.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="../css/business-casual.css" rel="stylesheet">
+    <link href="views/css/business-casual.css" rel="stylesheet">
+
     <!-- Fonts -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
     <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -50,13 +52,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href=/testerdashboard >Home</a>
+                    <a href="index.html">Home</a>
                 </li>
                 <li>
-                    <a href=/searchcustomer >Search Customer</a>
+                    <a href="about.html">About</a>
                 </li>
                 <li>
-                    <a href="blog.ejs">Blog</a>
+                    <a href="blog.html">Blog</a>
                 </li>
                 <li>
                     <a href="contact.html">Contact</a>
@@ -72,223 +74,423 @@
     <!-- /.container -->
 </nav>
 
-<div class="container">
+<div class="container"   data-ng-app="MtaaS" data-ng-controller="MtaaS">
 
     <div class="row">
         <div class="box">
             <div class="col-lg-12 text-center">
                 <div id="carousel-example-generic" class="carousel slide">
-                    <!-- Indicators -->
-                    <ol class="carousel-indicators hidden-xs">
-
-                    </ol>
-
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
                         <div class="container">
                             <div class="row">
                                 <div class="col-sm-4 col-sm-offset-1">
-                                    <div class="login-form" data-ng-app="MtaaS" data-ng-controller="MtaaS"><!--login form-->
-                                        <h2>Login to your account</h2>
-                                        <form action="#">
-                                            <label>User Name  <input type="text" placeholder="User Name" ng-model="name"/><br><br>
-                                                First Name  <input type="text" placeholder="First Name" ng-model="fname" /><br><br>
-                                                Middle Name  <input type="text" placeholder="Middle Name" ng-model="mname" /><br><br>
-                                                Last Name  <input type="text" placeholder="Last Name" ng-model="lname" /><br><br>
-                                                Phone Number  <input type="number" placeholder="Phone Number" ng-model="phone" /><br><br>
-                                                Email Address  <input type="email" placeholder="Email Address" ng-model="email"/><br><br>
-                                                Address1  <input type="text" placeholder="Address1" ng-model="address1"/><br><br>
-                                                Address2  <input type="text" placeholder="Address2" ng-model="address2"/><br><br>
-                                                Country  <input type="text" placeholder="Country" ng-model="country"/><br><br>
-                                                Zip  <input type="text" placeholder="Zip" ng-model="zip"/><br><br>
-                                                Linkedin Profile  <input type="text" placeholder="Linked profile" ng-model="linkedin"/><br><br>
-                                                Password  <input type="password" placeholder="Password" ng-model="password"/><br><br>
-                                                Confirm Password  <input type="password" placeholder="Confirm Password" ng-model="cpassword"/><label></label></label><br><br>
-                                            <label>
-                                                <a href="#" placeholder="Signup as tester" ng-click="signup_tester()">SIGN UP AS TESTER</a>
-                                                <br><br>
-                                                <a href="#" placeholder="Signup as Customer" ng-click="signup_customer()">SIGN UP AS CUSTOMER</a>
-                                                <br><br>
-                                            </label>
-                                        </form>
+                                    <div class="login-form"><!--login form-->
+                                        <div class="container">
+                                            <h2 align="left">Tester Information</h2>
+                                            <ul class="nav nav-tabs">
+                                                <li class="active"><a data-toggle="tab" href="#Experience">Tester Details</a></li>
+                                                <li><a data-toggle="tab" href="#TestingExpertise">Experience</a></li>
+                                                <li><a data-toggle="tab" href="#DeviceDetails">OS & Devices Information</a></li>
+                                                <li><a data-toggle="tab" href="#BankDetails">Bank Details</a></li>
+                                            </ul>
 
+                                            <div class="tab-content">
+                                                <div id="Experience" class="tab-pane fade in active col-sm-4">
+                                                    <form class="login-form ">
+                                                        <h3 >Experience</h3><br><br>
+                                                        <form action="#">
+                                                            <label>User Name  <input type="text" placeholder="User Name" ng-model="name"/><br><br>
+                                                                First Name  <input type="text" placeholder="First Name" ng-model="fname" /><br><br>
+                                                                Middle Name  <input type="text" placeholder="Middle Name" ng-model="mname" /><br><br>
+                                                                Last Name  <input type="text" placeholder="Last Name" ng-model="lname" /><br><br>
+                                                                Phone Number  <input type="number" placeholder="Phone Number" ng-model="phone" /><br><br>
+                                                                Email Address  <input type="email" placeholder="Email Address" ng-model="email"/><br><br>
+                                                                Address1  <input type="text" placeholder="Address1" ng-model="address1"/><br><br>
+                                                                Address2  <input type="text" placeholder="Address2" ng-model="address2"/><br><br>
+                                                                Country  <input type="text" placeholder="Country" ng-model="country"/><br><br>
+                                                                Zip  <input type="text" placeholder="Zip" ng-model="zip"/><br><br>
+                                                                Linkedin Profile  <input type="text" placeholder="Linked profile" ng-model="linkedin"/><br><br>
+                                                                Password  <input type="password" placeholder="Password" ng-model="password"/><br><br>
+                                                                Confirm Password  <input type="password" placeholder="Confirm Password" ng-model="cpassword"/><label></label></label><br><br>
+                                                            <button type="submit" class="btn btn-default" ng-click="signup()">Save</button>
+                                                        </form>
+                                                    </form>
+
+
+
+                                                </div>
+
+                                                <div id="TestingExpertise" class="tab-pane fade">
+                                                    <h3>TestingExpertise</h3>
+
+                                                    <b>Years Of Experience:</b>
+                                                    <Input type="number" placeholder="Years Of Experience" ng-model="experience">
+
+                                                    <br><br>
+
+
+                                                    <b>Types Of Testing:</b>
+                                                    <div class="checkbox">
+                                                        <label class="checkbox-inline"><input type="checkbox"
+                                                                                              name="functional"
+                                                                                              ng-model="testing.functional" ng-true-value="'Functional'" ng-false-value="''"/>Functional</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="unit"
+                                                                      ng-model="testing.unit" ng-model="testing.functional" ng-true-value="'Unit'" ng-false-value="''"/>Unit</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="performance"
+                                                                      ng-model="testing.performance" ng-true-value="'performance'" ng-false-value="''"/>Performance</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="usability"
+                                                                      ng-model="testing.usability" ng-true-value="'usability'" ng-false-value="''"/>Usability</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="security"
+                                                                      ng-model="testing.security" ng-true-value="'security'" ng-false-value="''"/>Security</label>
+                                                    </div>
+
+                                                    <!--br><br>
+                                                        <label>You have selected : {{testing.functional}}   {{testing.unit}}   {{testing.performance}}   {{testing.usability}}   {{testing.security}}</label><br/>
+                                                    <br><br-->
+
+                                                    <br><br>
+
+                                                    <b>Testing tools: </b>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="Tool A"
+                                                                      ng-model="testing.toolA" ng-true-value="'toolA'" ng-false-value="''">Tool A</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="Tool B"
+                                                                      ng-model="testing.toolB" ng-true-value="'toolB'" ng-false-value="''">Tool B</label>
+                                                    </div>
+                                                    <div class="checkbox disabled">
+                                                        <label><input type="checkbox" name="Tool C"
+                                                                      ng-model="testing.toolC" ng-true-value="'toolC'" ng-false-value="''">Tool C</label>
+                                                    </div>
+                                                    <!--br><br>
+                                                    <label>You have selected : {{testing.toolA}}   {{testing.toolB}}   {{testing.toolC}}   </label><br/>
+                                                    <br><br-->
+
+
+                                                    <br><br>
+
+
+                                                    <b>Language Known:</b>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="english" ng-model="testing.english" ng-true-value="'english'" ng-false-value="''">English</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="french" ng-model="testing.french" ng-true-value="'french'" ng-false-value="''">French</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="japanese" ng-model="testing.japanese" ng-true-value="'japanese'" ng-false-value="''">Japanese</label>
+                                                    </div>
+
+                                                    <br><br>
+
+
+                                                    <div class="form-inline">
+
+                                                        <div class="form-group">
+                                                            <input type="file" name="files[]" id="js-upload-files">
+                                                        </div><br><br>
+                                                        <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload Resume</button>
+
+                                                    </div>
+                                                    <br><br>
+
+                                                    <button type="submit" class="btn btn-default"  ng-click="testerdetail()">Save</button>
+
+
+                                                </div>
+
+                                                <div id="DeviceDetails" class=" col-sm-4 tab-pane fade">
+                                                    <h3>OS and Devices Experience</h3>
+
+                                                    <br><br>
+                                                    <div class="btn-group">
+                                                        <span>
+
+                                                       <b>Operating System:</b>
+                                                    <div class="checkbox">
+                                                        <label class="checkbox-inline"><input type="checkbox"
+                                                                                              name="IOS"
+                                                                                              ng-model="testing.IOS" ng-true-value="'ios'" ng-false-value="''"/>IOS</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="android"
+                                                                      ng-model="testing.android" ng-model="testing.android" ng-true-value="'android'" ng-false-value="''"/>Android</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="windows"
+                                                                      ng-model="testing.windows" ng-model="testing.windows" ng-true-value="'windows'" ng-false-value="''"/>Windows</label>
+                                                    </div>
+
+                                                            </span>
+                                                    </div><br><br>
+
+                                                    <div class="btn-group">
+                                                        <span >
+                                                            Handset Model
+                                                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                                            Handset model
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#">iPhone</a></li>
+                                                            <li><a href="#">Samsung</a></li>
+                                                        </ul>
+                                                            </span>
+                                                    </div><br><br>
+
+                                                    <div class="btn-group">
+                                                        <span>
+                                                            Operating System
+
+                                                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                                            Operating System
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#">iPhone</a></li>
+                                                            <li><a href="#">Samsung</a></li>
+                                                        </ul>
+                                                            </span>
+                                                    </div><br><br>
+
+                                                    <div class="btn-group">
+                                                        <span>
+                                                            Wirelss Carriers
+                                                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                                            Wireless Carriers
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#">iPhone</a></li>
+                                                            <li><a href="#">Samsung</a></li>
+                                                        </ul>
+                                                            </span>
+                                                    </div><br><br>
+
+
+                                                    <button type="submit" class="btn btn-default">Save</button>
+
+
+                                                </div>
+
+
+                                                <div id="BankDetails" class="tab-pane fade col-sm-4">
+                                                    <h3>Bank Account Details</h3><br>
+
+                                                    <div class="btn-group">
+                                                        <span>
+                                                            Bank Name
+                                                        <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                                            Select Bank
+                                                            <span class="caret"></span>
+                                                        </button>
+                                                        <ul class="dropdown-menu">
+                                                            <li><a href="#">Bank Of America</a></li>
+                                                            <li><a href="#">Citi Bank</a></li>
+                                                        </ul>
+                                                            </span>
+                                                    </div><br><br>
+
+                                                     <Span>
+                                                      Account Holder Name
+                                                      <Input type="text" placeholder="Enter Account Holder Name">
+
+                                                  </Span><br><br>
+
+                                                     <Span>
+                                                      Account Number
+                                                      <Input type="number" placeholder="Account Number">
+
+                                                  </Span><br><br>
+
+                                                    <button type="submit" class="btn btn-default">Save</button>
+
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div><!--/login form-->
                                 </div>
 
-                            </div>
 
-                            <!-- Controls -->
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="icon-prev"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="icon-next"></span>
-                            </a>
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+
+                                </a>
+                                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+
+                                </a>
+                            </div>
+                            <h2 class="brand-before">
+                                <small>Welcome to</small>
+                            </h2>
+                            <h1 class="brand-name">Testify</h1>
+                            <hr class="tagline-divider">
+                            <h2>
+                                <small>By
+                                    <strong>Team 9</strong>
+                                </small>
+                            </h2>
                         </div>
-                        <h2 class="brand-before">
-                            <small>Welcome to</small>
-                        </h2>
-                        <h1 class="brand-name">Testify</h1>
-                        <hr class="tagline-divider">
-                        <h2>
-                            <small>By
-                                <strong>Team 9</strong>
-                            </small>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> <!--controller end -->
+                    </div> <!-- carousel inner -->
+                </div> <!-- carousel-example-generic -->
+            </div> <!-- col-lg-12 text-center-->
+        </div> <!-- box -->
+    </div> <!--row -->
+</div> <!-- container -->
 <script>
     var app=angular.module('MtaaS', [])
     app.controller('MtaaS', ['$scope', '$http', '$window', function ( $scope,$http,$window)
     {
-        alert("I am here");
+        alert("I am in controller");
+        var in_name;
+        var in_phone;
+        var in_email;
+        var in_fname;
+        var in_mname;
+        var in_lname;
+        var in_address1;
+        var in_address2;
+        var in_country;
+        var in_zip;
+        var in_linkedin;
+        var in_password;
+        var in_cpassword;
 
-        //tester signup function
-        $scope.signup_tester = function (){
+        var in_experience;
+        var in_functional;
+        var in_unit;
+        var in_testing;
+        var in_tool;
+        var in_language;
+        //Tester Sign up function
+
+        $scope.signup = function () {
             alert("I am in signup function");
-            var in_name = $scope.name;
-            var in_phone = $scope.phone;
-            var in_email = $scope.email;
-            var in_fname= $scope.fname;
-            var in_mname=$scope.mname;
-            var in_lname=$scope.lname;
-            var in_address1 = $scope.address1;
-            var in_address2 = $scope.address2;
-            var in_country=$scope.country;
-            var in_zip=$scope.zip;
-            var in_linkedin= $scope.linkedin;
-            var in_password = $scope.password;
-            var in_cpassword = $scope.cpassword;
+            in_name = $scope.name;
+            alert(in_name);
+            in_phone = $scope.phone;
+            in_email = $scope.email;
+            in_fname = $scope.fname;
+            in_mname = $scope.mname;
+            in_lname = $scope.lname;
+            in_address1 = $scope.address1;
+            in_address2 = $scope.address2;
+            in_country = $scope.country;
+            in_zip = $scope.zip;
+            in_linkedin = $scope.linkedin;
+            in_password = $scope.password;
+            in_cpassword = $scope.cpassword;
 
-            if (in_fname == null || in_fname == "")
-            {
+            //console.log("doing the validation here ");
+
+//Validation for fields not empty
+
+            if (in_fname == null || in_fname == "") {
                 alert("Enter first name!!");
                 return;
             }
 
-            if (in_lname == null || in_lname == "")
-            {
+            if (in_lname == null || in_lname == "") {
                 alert("Enter last name");
                 return;
             }
 
-            if (in_email == null || in_email == "")
-            {
+            if (in_email == null || in_email == "") {
                 alert("Enter Email");
                 return;
             }
-            if (in_name == null || in_name == "")
-            {
+            if (in_name == null || in_name == "") {
                 alert("Enter Username");
                 return;
             }
-            if (in_phone == null || in_phone == "")
-            {
-                alert("Enter first name!!");
-                return;
-            }
 
-            if (in_password == null || in_password == "")
-            {
+            if (in_password == null || in_password == "") {
                 alert("Enter a Password");
                 return;
             }
-
-            if (in_password != in_cpassword)
-            {
+            //validation for password and confirm password
+            if (in_password != in_cpassword) {
                 alert("Passwords don't match.");
                 return;
             }
+        };
+        /*
+         $http({
+         method: 'POST',
+         url: '/signup',
+         data: {"fname":in_fname,"mname": in_mname, "lname":in_lname,"email": in_email,"name":in_name,"password":in_password, "address1":in_address1,"address2":in_address2,"country":in_country,"zip": in_zip,"linkedin": in_linkedin,"phone": in_phone}
+         }).
+         then(function(response) {
+
+         $window.location.href = '/index';
+         });
+         }
+         */
+
+        //Testing function
+        $scope.testing = {
+            functional: '',
+            unit : '',
+            performance : '',
+            usability : '',
+            security : '',
+            toolA : '',
+            toolB : '',
+            toolC : '',
+            english: '',
+            french: '',
+            japanese: ''
+        };
+
+        $scope.testerdetail = function () {
+            alert("I am in testerdetail");
+            in_experience= $scope.experience;
+            in_functional = $scope.testing.functional;
+            in_unit = $scope.testing.unit;
+            in_testing = in_functional.concat(in_unit, $scope.testing.performance, $scope.testing.usability, $scope.testing.security);
+            in_tool = $scope.testing.toolA.concat($scope.testing.toolB, $scope.testing.toolC);
+            in_language = $scope.testing.english.concat($scope.testing.french, $scope.testing.spanish);
+            alert(in_language);
+
+            if (in_experience == null || in_experience == "") {
+                in_experience = 0;
+                return;
+            }
+            /*
+             $http({
+             method: 'POST',
+             url: '/testerdetail',
+             data: {"experience": in_experience, "testingtype": in_testing, "testingtool": in_tool, "language": in_language}
+             }).
+             then(function (response) {
+             $window.location.href = '/index';
+             });
 
 
-            $http({
-                method: 'POST',
-                url: '/signup_tester',
-                data: {"fname":in_fname,"mname": in_mname, "lname":in_lname,"email": in_email,"name":in_name,"password":in_password, "address1":in_address1,"address2":in_address2,"country":in_country,"zip": in_zip,"linkedin": in_linkedin,"phone": in_phone}
-            }).
-            then(function(response) {
+             alert("i am here after http");
+             //alert(in_testing);
+             //alert($scope.testing.unit);
 
-                $window.location.href = '/login';
-            });
+             //alert(in_testing);
+             */
         }
 
 
-        //customer signup function
-        $scope.signup_customer = function (){
-            alert("I am in signup function");
-            var in_name = $scope.name;
-            var in_phone = $scope.phone;
-            var in_email = $scope.email;
-            var in_fname= $scope.fname;
-            var in_mname=$scope.mname;
-            var in_lname=$scope.lname;
-            var in_address1 = $scope.address1;
-            var in_address2 = $scope.address2;
-            var in_country=$scope.country;
-            var in_zip=$scope.zip;
-            var in_linkedin= $scope.linkedin;
-            var in_password = $scope.password;
-            var in_cpassword = $scope.cpassword;
+    }
 
-            if (in_fname == null || in_fname == "")
-            {
-                alert("Enter first name!!");
-                return;
-            }
-
-            if (in_lname == null || in_lname == "")
-            {
-                alert("Enter last name");
-                return;
-            }
-
-            if (in_email == null || in_email == "")
-            {
-                alert("Enter Email");
-                return;
-            }
-            if (in_name == null || in_name == "")
-            {
-                alert("Enter Username");
-                return;
-            }
-            if (in_phone == null || in_phone == "")
-            {
-                alert("Enter first name!!");
-                return;
-            }
-
-            if (in_password == null || in_password == "")
-            {
-                alert("Enter a Password");
-                return;
-            }
-
-            if (in_password != in_cpassword)
-            {
-                alert("Passwords don't match.");
-                return;
-            }
-
-
-            $http({
-                method: 'POST',
-                url: '/signup_customer',
-                data: {"fname":in_fname,"mname": in_mname, "lname":in_lname,"email": in_email,"name":in_name,"password":in_password, "address1":in_address1,"address2":in_address2,"country":in_country,"zip": in_zip,"linkedin": in_linkedin,"phone": in_phone}
-            }).
-            then(function(response) {
-
-                $window.location.href = '/login';
-            });
-        }
-
-
-
-    }]);
+    ]);
 </script>
+
+
 </body>
 </html>
