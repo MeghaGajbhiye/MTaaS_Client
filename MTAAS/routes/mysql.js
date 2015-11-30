@@ -6,7 +6,7 @@ function getConnection(){
 	    host     : '127.0.0.1',
 	    user     : 'root',
 	    password : 'mysql@123',
-	    database : 'mydb',
+	    database : 'smsm_cloud',
 	    port	 : 3306
 	});
 	return connection;

@@ -107,6 +107,39 @@ MtaasRouteConfig.prototype.addRoutes = function () {
         }
     });
 
+    self.routeTable.push({
+
+        requestType : 'get',
+        requestUrl : '/testerprofile',
+        callbackFunction : function (request, response) {
+
+            response.render('testerprofile', { title : "Create Product Category" });
+        }
+    });
+
+
+
+    self.routeTable.push({
+
+        requestType : 'get',
+        requestUrl : '/searchcustomer',
+        callbackFunction : function (request, response) {
+
+            response.render('searchcustomer', { title : "Create Product Category" });
+        }
+    });
+
+
+
+    self.routeTable.push({
+
+        requestType : 'get',
+        requestUrl : '/customerinfo',
+        callbackFunction : function (request, response) {
+
+            response.render('customerinfo', { title : "Create Product Category" });
+        }
+    });
 
 
 }

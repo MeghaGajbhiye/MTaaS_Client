@@ -31,7 +31,10 @@ if ('development'  === app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.post('/signup',user.signup);
+app.post('/signup_tester',user.signup_tester);
+app.get('/testerdashboard',user.testerdashboard);
+app.get('/customerdetail',user.customerdetail);
+app.post('/signup_customer',user.signup_customer);
 app.post('/developersignup',user.developersignup);
 app.post('/signin',user.signin);
 app.post('/testerdetail',user.testerdetail);
@@ -42,6 +45,7 @@ app.get('/shwsignupd', user.showsignupd);
 app.get('/terms', user.terms);
 app.get('/username',user.username );
 app.get('/testerdetail', user.testerdetail);
+app.get('/customerdetails', user.customerdetails);
 //app.get('/logout', user.logout);
 app.get('/home1', user.home);
 app.get('/checksession', user.checksession);

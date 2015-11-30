@@ -108,14 +108,11 @@
                                         <h2>New User Signup!</h2>
                                         <form action="#">
 
+                                            <br>
+                                            <br>
+                                            <br>
 
-                                            </label>
-                                            <br><br><br>
-                                            Sign up as:
-                                            <br><br>
-                                            <a href=/signup >Tester</a>
-                                            <br><br>
-                                            <a href=/customerdetail ng-click="customersignup()">Customer</a>
+                                            <a href=/signup >LOGIN</a>
 
                                         </form>
                                     </div><!--/sign up form-->
@@ -168,59 +165,141 @@
 
      });
  */
- $scope.signin = function (){
-				alert($scope.name);
-				//alert($scope.password);
-				var in_name = $scope.name;
-				var in_password=$scope.password;
-				//var in_type=$scope.type;
-				 
-	if (in_name == null || in_name == "")			 {
-		alert("Username cannot be empty!!");
-		return;
-	}
-	
-	if (in_password == null || in_password == "")
-	{
-		alert("password cannot be empty!!");
-		return;
-	}
-	/*if (in_type == null || in_type == "")
-	{
-		alert("Please select Tester or Developer!!");
-		return;
-	}*/
-				$http({
-			      	  method: 'POST',
-			      	  url: '/signin',
-			      	  data: {"name":in_name,"password":in_password}
-			        }).
-			          then(function(response) {
 
-                    if(response.data.status===100)
-                    {
-                        window.location.href='/testerdashboard';
-                    }
-                    else if(response.data.status==101)
-                    {
-                        window.location.href='/testerinfo';
-                    }
-                    else if(response.data.status == 102)
-                    {
-                        alert("Invalid Username and Password");
 
-                    }
+     $scope.signin = function (){
+         //alert($scope.name);
+         //alert($scope.password);
+         var in_name = $scope.name;
+         var in_password=$scope.password;
+         //var in_type=$scope.type;
 
-			          }); 
+         if (in_name == null || in_name == "")			 {
+             alert("Username cannot be empty!!");
+             return;
+         }
 
-}
- 
- $scope.shwsignup = function (){
-   $window.location.href = '/shwsignup';
-}
- $scope.shwsignupd = function (){
-   $window.location.href = '/shwsignupd';
-}
+         if (in_password == null || in_password == "")
+         {
+             alert("password cannot be empty!!");
+             return;
+         }
+         /*if (in_type == null || in_type == "")
+          {
+          alert("Please select Tester or Developer!!");
+          return;
+          }*/
+         $http({
+             method: 'POST',
+             url: '/signin',
+             data: {"name":in_name,"password":in_password}
+         }).
+         then(function(response) {
+             alert("ia minside");
+             if(response.data.status == 100)
+             {
+                 alert("Invalid User and Password!");
+             }
+             else if(response.data.status == 199)
+             {
+                 $window.location.href = '/testerdashboard';
+             }
+             else if(response.data.status == 198)
+             {
+                 $window.location.href = '/customerdetail';
+             }
+         });
+
+     }
+
+     /*
+
+      if(response.data.status == 100)
+      {
+      alert("Invalid User and Password!");
+      }
+      else if(response.data.status == 199)
+      {
+      $window.location.href = '/testerdashboard';
+      }
+      else if(response.data.status == 198)
+      {
+      $window.location.href = '/customerdetail';
+      }
+
+
+
+ $scope.signin = function () {
+     alert($scope.name);
+     //alert($scope.password);
+     var in_name = $scope.name;
+     var in_password = $scope.password;
+     //var in_type=$scope.type;
+
+     if (in_name == null || in_name == "") {
+         alert("Username cannot be empty!!");
+         return;
+     }
+
+     if (in_password == null || in_password == "") {
+         alert("password cannot be empty!!");
+         return;
+     }
+
+     $http({
+         method: 'POST',
+         url: '/signin',
+         data: {"name": in_name, "password": in_password}
+     }).
+
+     then(function (response) {
+         if (response.data.status == 100) {
+             alert("Invalid User and Password!");
+         }
+         else {
+             $window.location.href = '/home';
+         }
+     });
+
+     */
+     /*
+      then(function(response) {
+      /*
+      if(response.data.status == 100)
+      {
+      alert("response.data.status" + response.data.status);
+
+      window.location.href='/testerdashboard';
+      }
+      else if(response.data.status == 99)
+      {
+      alert("Username and password does not exist");
+      window.location.href='/login';
+      }
+      else if(response.data.status == 101)
+      {
+      window.location.href='/testerinfo';
+      }
+      else if(response.data.status == 98)
+      {
+      alert("Invalid Username and Password");
+
+      }
+      else if(response.data.status == 200)
+      {
+      window.location.href='/customerdetail'
+      }
+
+      */
+     /*                    alert("I am inside signin function");
+      $window.location.href='/testerdashboard';
+
+      });
+
+      }
+
+      */
+
  }]);
 	
 </script>
