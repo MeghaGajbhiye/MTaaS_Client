@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Customer Info</title>
+    <title>Testify</title>
 
     <!-- Bootstrap Core CSS -->
     <!-- link href="css/bootstrap.min.css" rel="stylesheet" -->
@@ -56,10 +56,10 @@
                     <a href="blog.ejs">Blog</a>
                 </li>
                 <li>
-                    <a href="contact.html">Contact</a>
+                    <a href="contact.ejs">Contact</a>
                 </li>
                 <li>
-                    <a href="contact.html">Login</a>
+                    <a href="contact.ejs">Login</a>
                 </li>
 
             </ul>
@@ -269,8 +269,13 @@
                                                       <Input type="number" placeholder="Account Number" ng-model="accountnumber">
                                                          <button type="submit" class="btn btn-default" ng-click="bankdetail()">Submit</button>
 
-                                                  </Span><br><br>
+                                                            <div class="form-group">
+                                                                <input type="file" name="files[]" id="js-upload-files">
+                                                            </div><br><br>
+                                                            <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload files</button>
 
+                                                        </div>
+                                                    </form>
 
 
                                                 </div>

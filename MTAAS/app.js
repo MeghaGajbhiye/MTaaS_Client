@@ -7,7 +7,8 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+,serveStatic=require('serve-static');
 
 var app = express();
 app.use(express.cookieParser());
@@ -22,6 +23,7 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
+app.use('/public/',serveStatic(__dirname+'/public/'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
@@ -31,6 +33,9 @@ if ('development'  === app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+app.get('/about',user.about);
+app.get('/blog',user.blog);
+app.get('/contact',user.contact);
 app.post('/signup_tester',user.signup_tester);
 app.get('/testerdashboard',user.testerdashboard);
 app.get('/testerinfo',user.testerinfo);

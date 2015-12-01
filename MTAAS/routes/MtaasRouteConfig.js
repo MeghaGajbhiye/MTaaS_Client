@@ -172,6 +172,27 @@ MtaasRouteConfig.prototype.addRoutes = function () {
         }
     });
 
+    self.routeTable.push({
+
+        requestType : 'get',
+        requestUrl : '/about',
+        callbackFunction : function (request, response) {
+
+            response.render('about', { title : "testify aboout " });
+        }
+    });
+
+    self.routeTable.push({
+
+        requestType : 'get',
+        requestUrl : '/blog',
+        callbackFunction : function (request, response) {
+
+            response.render('blog', { title : "Testify Blogs" });
+        }
+    });
+
+
 
 }
 
