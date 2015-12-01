@@ -82,36 +82,22 @@
                                 <div class="col-sm-4 col-sm-offset-1">
                                     <div class="login-form"><!--login form-->
                                         <div class="container">
-                                            <h2 align="left">Customer Information</h2>
+                                            <h2 align="left">Tester Information</h2>
                                             <ul class="nav nav-tabs">
-                                                <li class="active"><a data-toggle="tab" href="#CustomerDetail">Customer Details</a></li>
-                                                <li><a data-toggle="tab" href="#AppDetail">Application Details</a></li>
-                                                <li><a data-toggle="tab" href="#CostDetails">Cost Summary</a></li>
+
+                                                <li><a data-toggle="tab" href="#TesterDetail">Tester Experience</a></li>
+                                                <li><a data-toggle="tab" href="#deviceinfo">Device info</a></li>
                                                 <li><a data-toggle="tab" href="#BankDetails">Bank Details</a></li>
-                                            </ul>
+                                                ...                                            </ul>
 
                                             <div class="tab-content">
-                                                <div id="CustomerDetail" class="tab-pane fade in active col-sm-4">
-                                                    <form class="login-form ">
-                                                        <h3 >Customer Details</h3><br><br>
-                                                        <form action="#">
-                                                            <label>Company Name  <input type="text" placeholder="Company Name " required="required"ng-model="compname"/><br><br>
-                                                                Number of Employees  <input type="number" placeholder="Number of Employees"required="required" ng-model="emp" /><br><br>
-                                                                Job Title  <input type="text" placeholder="Job Title" required="required"ng-model="jobtitle" /><br><br>
-                                                                Company Email  <input type="text" placeholder="Company Email"required="required" ng-model="compemail" /><br><br>
-                                                                Company Phone Number  <input type="number" placeholder="Phone Number" ng-model="phone" /><br><br>
-                                                                <button type="submit" class="btn btn-default" ng-click="save_customer()">Next</button>
-                                                            </label>
-                                                        </form>
-                                                    </form>
 
-                                                </div>
 
-                                                <div id="AppDetail" class="tab-pane fade">
-                                                    <h3>Application Details</h3>
+                                                <div id="TesterDetail" class="tab-pane fade">
+                                                    <h3>Tester Details</h3>
 
-                                                    <b>Name of applications:</b>
-                                                    <Input type="text" placeholder="Application Name" ng-model="applicationName">
+                                                    <b>Experience:</b>
+                                                    <Input type="number" placeholder="Experience" ng-model="experience" required>
                                                     <!--button type="submit" class="btn btn-default" ng-click="save_customer()">Save</button-->
 
                                                     <br><br>
@@ -205,15 +191,7 @@
                                                     <br><br>
 
 
-                                                    <b>Urgency Factor</b>
-                                                    <Input type="number" placeholder="No. of Days" ng-model="days">
 
-                                                    <br><br>
-
-                                                    <b>Number of Test Cases</b>
-                                                    <Input type="number" placeholder="No. of Test Cases" ng-model="testcases">
-
-                                                    <br><br>
 
 
                                                     <div class="form-inline">
@@ -221,26 +199,45 @@
                                                         <div class="form-group">
                                                             <input type="file" name="files[]" id="js-upload-files">
                                                         </div><br><br>
-                                                        <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload App</button>
+                                                        <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload Resume</button>
 
                                                     </div>
                                                     <br><br>
 
-                                                    <button type="submit" class="btn btn-default"  ng-click="Appdetail()">Save</button>
+                                                    <button type="submit" class="btn btn-default"  ng-click="tester()">Save</button>
 
 
                                                 </div>
 
-                                                <div id="CostDetails" class=" col-sm-4 tab-pane fade">
-                                                    <h3>Cost Summary</h3>
+                                                <div id="deviceinfo" class=" col-sm-4 tab-pane fade">
+                                                    <h3>Device Info</h3>
 
-                                                    <b>Total Cost: </b>
-                                                    <label type="number" ng-model="cost"></label>
+                                                    <b>PreferredOperating System </b>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="ios"
+                                                                      ng-model="testing.ios" ng-true-value="'ios'" ng-false-value="''">ios</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="android"
+                                                                      ng-model="testing.android" ng-true-value="'android'" ng-false-value="''">Android</label>
+                                                    </div>
+
+                                                    <br><br>
+                                                    <b>Preferred mobile device</b>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="iphone"
+                                                                      ng-model="testing.iphone" ng-true-value="'iphone'" ng-false-value="''">Iphone</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="samsung"
+                                                                      ng-model="testing.samsung" ng-true-value="'samsung'" ng-false-value="''">Samsung</label>
+                                                    </div>
 
                                                     <br><br>
 
 
-                                                    <button type="submit" class="btn btn-default">Agree</button>
+                                                    <br><br>
+                                                    <button type="submit" class="btn btn-default" ng-click="deviceinfo()">Save</button>
 
 
                                                 </div>
@@ -267,7 +264,7 @@
                                                      <Span>
                                                       Account Number
                                                       <Input type="number" placeholder="Account Number" ng-model="accountnumber">
-                                                         <button type="submit" class="btn btn-default" ng-click="bankdetail()">Submit</button>
+                                                         <button type="submit" class="btn btn-default" ng-click="bankdetail_tester()">Submit</button>
 
                                                   </Span><br><br>
 
@@ -310,26 +307,9 @@
     var app=angular.module('MtaaS', [])
     app.controller('MtaaS', ['$scope', '$http', '$window', function ( $scope,$http,$window)
     {
-        alert("I am in controller");
 
-        $scope.save_customer = function () {
 
-            var comp_name= $scope.compname;
-            var comp_email = $scope.compemail;
-            var comp_employees = $scope.emp;
-            var job_title = $scope.jobtitle;
-            var in_phone = $scope.phone;
 
-            $http({
-                method: 'POST',
-                url: '/save_customer',
-                data: {"company_name": comp_name, "company_email": comp_email, "company_emp": comp_employees, "job_title": job_title,"in_phone":in_phone}
-            }).
-            then(function (response) {
-                $window.location.href = '/';
-            });
-
-        }
         alert("I am in controller");
         $scope.testing = {
             functional: '',
@@ -345,40 +325,70 @@
             spanish: '',
             java: '',
             javascript: '',
-            ruby:''
+            ruby:'',
+            ios:'',
+            android:'',
+            iphone:'',
+            samsung:''
         };
 
-        $scope.Appdetail = function () {
-            alert("I am in Appdetail");
-            var in_applicationName= $scope.applicationName;
-            console.log(in_applicationName);
+        $scope.tester = function () {
+
+            var in_experience= $scope.experience;
+            console.log(in_experience);
             var in_functional = $scope.testing.functional;
-            alert(in_functional);
+
             var in_unit = $scope.testing.unit;
             //  var in_testing = in_functional.concat(in_unit, $scope.testing.performance, $scope.testing.usability, $scope.testing.security);
             var in_testing =in_functional +" "+ in_unit+" "+$scope.testing.performance+" "+ $scope.testing.usability+ " "+ $scope.testing.security;
-            alert(in_testing);
+
             var in_tool = $scope.testing.toolA+" "+ $scope.testing.toolB+" "+ $scope.testing.toolC;
-            console.log(in_tool);
+
             var in_language = $scope.testing.english+" "+$scope.testing.french+" "+ $scope.testing.spanish;
             var in_codinglanguage = $scope.testing.java+" "+$scope.testing.javascript+" "+ $scope.testing.ruby;
-            var in_urgency= $scope.days;
-            var in_testcases= $scope.testcases;
-            alert(in_codinglanguage);
+
+
+
+            if (in_experience == null || in_experience == "")			 {
+                alert("Experience cannot be empty!!");
+                return;
+            }
+
 
             $http({
 
                 method: 'POST',
-                url: '/Appdetail',
-                data: {"applicationName": in_applicationName, "testingtype": in_testing, "testingtool": in_tool, "language": in_language, "coding_lang": in_codinglanguage, "urgency": in_urgency,"testcases": in_testcases}
+                url: '/tester',
+                data: {"experience": in_experience, "testingtype": in_testing, "testingtool": in_tool, "language": in_language, "code_lang": in_codinglanguage}
             }).
             then(function (response) {
                 $window.location.href = '/';
             });
-            alert("I am in post appdetail");
+            alert("I am in post tester");
 
         }
-        $scope.bankdetail = function () {
+
+
+        $scope.deviceinfo = function () {
+
+            var in_os = $scope.testing.ios+" "+ $scope.testing.android;
+            var in_handset = $scope.testing.iphone+" "+$scope.testing.samsung;
+            //var in_mobileversion = $scope.testing.iph5s+" "+$scope.testing.iph6s+" "+ $scope.testing.iph6;
+
+
+            $http({
+
+                method: 'POST',
+                url: '/deviceinfo',
+                data: {"handset": in_handset, "os": in_os}
+            }).
+            then(function (response) {
+                $window.location.href = '/';
+            });
+            alert("I am in deviceinfo tester");
+
+        }
+        $scope.bankdetail_tester = function () {
 
 
             var in_bankname = $scope.bankname;
@@ -387,11 +397,11 @@
 
             $http({
                 method: 'POST',
-                url: '/bankdetail',
+                url: '/bankdetail_tester',
                 data: {"bank_name": in_bankname, "account_name": in_accountname, "account_number": in_accountnumber}
             }).
             then(function (response) {
-                $window.location.href = '/';
+                $window.location.href = '/testerdashboard';
             });
             alert("I am in post bankdetail");
         }

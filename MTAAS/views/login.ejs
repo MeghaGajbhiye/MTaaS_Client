@@ -195,7 +195,7 @@
              data: {"name":in_name,"password":in_password}
          }).
          then(function(response) {
-             alert("ia minside");
+
              if(response.data.status == 100)
              {
                  alert("Invalid User and Password!");
@@ -208,9 +208,18 @@
              {
                  $window.location.href = '/customerdetail';
              }
+             else if(response.data.status == 197)
+             {
+                 $window.location.href = '/customersignup';
+             }
+             else if(response.data.status == 200)
+             {
+                 $window.location.href = '/testerinfo1';
+             }
+
          });
 
-     }
+     };
 
      /*
 

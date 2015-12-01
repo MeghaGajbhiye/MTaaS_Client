@@ -164,7 +164,7 @@
             var in_password = $scope.password;
             var in_cpassword = $scope.cpassword;
 
-            if (in_fname == null || in_fname == "")
+            /*if (in_fname == null || in_fname == "")
             {
                 alert("Enter first name!!");
                 return;
@@ -180,7 +180,7 @@
             {
                 alert("Enter Email");
                 return;
-            }
+            }*/
             if (in_name == null || in_name == "")
             {
                 alert("Enter Username");
@@ -188,7 +188,7 @@
             }
             if (in_phone == null || in_phone == "")
             {
-                alert("Enter first name!!");
+                alert("Enter phonenum!!");
                 return;
             }
 
@@ -211,8 +211,18 @@
                 data: {"fname":in_fname,"mname": in_mname, "lname":in_lname,"email": in_email,"name":in_name,"password":in_password, "address1":in_address1,"address2":in_address2,"country":in_country,"zip": in_zip,"linkedin": in_linkedin,"phone": in_phone}
             }).
             then(function(response) {
+                if(response.data.status == 200)
+                {
+                    alert("Username already exist");
+                    return;
+                }
+                if(response.data.status == 300)
+                {
+                    alert("Registered");
+                    $window.location.href = '/login';
+                }
 
-                $window.location.href = '/login';
+
             });
         }
 
@@ -233,7 +243,7 @@
             var in_linkedin= $scope.linkedin;
             var in_password = $scope.password;
             var in_cpassword = $scope.cpassword;
-
+/*
             if (in_fname == null || in_fname == "")
             {
                 alert("Enter first name!!");
@@ -251,17 +261,17 @@
                 alert("Enter Email");
                 return;
             }
-            if (in_name == null || in_name == "")
+  */          if (in_name == null || in_name == "")
             {
                 alert("Enter Username");
                 return;
             }
-            if (in_phone == null || in_phone == "")
+    /*        if (in_phone == null || in_phone == "")
             {
                 alert("Enter first name!!");
                 return;
             }
-
+*/
             if (in_password == null || in_password == "")
             {
                 alert("Enter a Password");
@@ -281,6 +291,16 @@
                 data: {"fname":in_fname,"mname": in_mname, "lname":in_lname,"email": in_email,"name":in_name,"password":in_password, "address1":in_address1,"address2":in_address2,"country":in_country,"zip": in_zip,"linkedin": in_linkedin,"phone": in_phone}
             }).
             then(function(response) {
+                    if(response.data.status == 200)
+                    {
+                        alert("Username already exist");
+                        return;
+                    }
+                    if(response.data.status == 300)
+                    {
+                        alert("Registered");
+                        $window.location.href = '/login';
+                    }
 
                 $window.location.href = '/login';
             });
