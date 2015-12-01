@@ -227,7 +227,19 @@ exports.customerview = function(req, res) {
 	res.render('customerview');
 };
 
+exports.about=function(req,res)
+{
+	res.render('about')
+}
+exports.blog=function(req,res)
+{
+	res.render('blog')
+}
+exports.contact=function(req,res)
+{
+	res.render('contact');
 
+}
 //LOGIN PAGE
 exports.signin = function(req, res){
 

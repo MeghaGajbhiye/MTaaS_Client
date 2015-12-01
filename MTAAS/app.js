@@ -33,6 +33,9 @@ if ('development'  === app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
+app.get('/about',user.about);
+app.get('/blog',user.blog);
+app.get('/contact',user.contact);
 app.post('/signup_tester',user.signup_tester);
 app.get('/testerdashboard',user.testerdashboard);
 app.get('/testerinfo',user.testerinfo);
