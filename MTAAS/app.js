@@ -7,7 +7,8 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+,ServeStatic=require('serve-static');
 
 var app = express();
 app.use(express.cookieParser());
@@ -22,6 +23,7 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
+app.use('/public',serveStatic(__dirname+'/public/'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
