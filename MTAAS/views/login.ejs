@@ -50,22 +50,22 @@
             <a class="navbar-brand" href="index.html">Testify</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-ng-app="MtaaS" data-ng-controller="MtaaS">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="./views/index.ejs">Home</a>
+                    <a href="/index">Home</a>
                 </li>
                 <li>
-                    <a href="../about.ejs">About</a>
+                    <a href="/about">About</a>
                 </li>
                 <li>
-                    <a href="../views/blog.ejs">Blog</a>
+                    <a href="/blog">Blog</a>
                 </li>
                 <li>
                     <a href="/contact">Contact</a>
                 </li>
                 <li>
-                    <a href="contact.ejs">Login</a>
+                    <a href="/login">Login</a>
                 </li>
 
             </ul>
@@ -79,7 +79,7 @@
 
     <div class="row">
         <div class="box">
-            <div class="col-lg-12 text-center">
+            <div class="col-lg-16 text-center">
                 <div id="carousel-example-generic" class="carousel slide">
                     <!-- Indicators -->
                     <ol class="carousel-indicators hidden-xs">
@@ -90,7 +90,7 @@
                     <div class="carousel-inner">
                         <div class="container">
                             <div class="row">
-                                <div class="col-sm-4 ">
+                                <div class="col-sm-6">
                                     <div class="login-form" ng-app="MtaaS" data-ng-controller="MtaaS">
                                     <!--login form-->
                                         <h2>Login to your account</h2>
@@ -99,37 +99,26 @@
                                             <input type="text" placeholder="Name" ng-model="name"><br><br>
                                             <!-- input type="password" placeholder="Password" / --><br><br>
                                             <input type ="password" placeholder="Your Password" ng-model="password"><br><br>
-                                            <button type="submit" class="btn btn-default" ng-click="signin()">Login</button>
+                                            <button type="submit" class="btn btn-default" ng-click="signin()">Login</button><br><br>
+                                            <span>
+                                                Not a User Please sign up
+                                                 <a href=/signup >Sign Up</a>
+<br><br><br><br>
+                                            </span>
                                         </form>
                                     </div><!--/login form-->
                                 </div>
-                                <div class="row">
-                                <div class="col-sm-1">
-                                    <h2 class="or">OR</h2>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="signup-form"><!--sign up form-->
-                                        <h2>New User Signup!</h2>
-                                        <form action="#">
 
-                                            <br>
-                                            <br>
-                                            <br>
-
-                                            <a href=/signup >LOGIN</a>
-
-                                        </form>
-                                    </div><!--/sign up form-->
                                     </div>
 
                     </div>
 
                     <!-- Controls -->
                     <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                        <span class="icon-prev"></span>
+
                     </a>
                     <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                        <span class="icon-next"></span>
+                      </span>
                     </a>
                 </div>
                 <h2 class="brand-before">
@@ -154,6 +143,23 @@
  var app=angular.module('MtaaS', [])
  app.controller('MtaaS', ['$scope', '$http', '$window', '$timeout',function ( $scope,$http,$window)
  {
+     $scope.login = function ()
+     {
+         $window.location.href = '/login';
+     }
+
+     $scope.about=function()
+     {
+         $window.location.href='/about';
+     }
+     $scope.blog=function()
+     {
+         $window.location.href='/blog';
+     }
+     $scope.contact=function()
+     {
+         $window.location.href='/contact';
+     }
 
 /*
      $http({
