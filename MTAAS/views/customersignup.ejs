@@ -316,6 +316,23 @@
 
             $scope.dollarAmmount = 0.00;
             $scope.annualCost = "$" + $scope.dollarAmmount + ".00";
+        $scope.about=function()
+        {
+            $window.location.href='/about';
+        };
+        $scope.blog=function()
+        {
+            $window.location.href='/blog';
+        };
+        $scope.contact=function()
+        {
+            $window.location.href='/contact';
+        };
+
+
+
+
+
 
             $scope.cost = function(amt,e) {
                 if(e.target.checked)
@@ -365,6 +382,8 @@
         };
 
         $scope.Appdetail = function () {
+
+
 
             var in_applicationName= $scope.applicationName;
 
@@ -459,18 +478,7 @@
 
     }
 
-        $scope.about=function()
-        {
-            $window.location.href='/about';
-        }
-        $scope.blog=function()
-        {
-            $window.location.href='/blog';
-        }
-        $scope.contact=function()
-        {
-            $window.location.href='/contact';
-        }
+
 
     ]);
 
