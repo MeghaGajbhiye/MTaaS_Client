@@ -13,7 +13,9 @@
 
     <!-- Bootstrap Core CSS -->
     <!-- link href="css/bootstrap.min.css" rel="stylesheet" -->
-
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/business-casual.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="views/css/business-casual.css" rel="stylesheet">
 
@@ -50,16 +52,16 @@
                     <a href="index.html">Home</a>
                 </li>
                 <li>
-                    <a href="about.ejs">About</a>
+                    <a href="/about">About</a>
                 </li>
                 <li>
-                    <a href="blog.ejs">Blog</a>
+                    <a href="/blog">Blog</a>
                 </li>
                 <li>
-                    <a href="contact.html">Contact</a>
+                    <a href="contact">Contact</a>
                 </li>
                 <li>
-                    <a href="contact.html">Login</a>
+                    <a href="login">Login</a>
                 </li>
 
             </ul>
@@ -314,6 +316,23 @@
 
             $scope.dollarAmmount = 0.00;
             $scope.annualCost = "$" + $scope.dollarAmmount + ".00";
+        $scope.about=function()
+        {
+            $window.location.href='/about';
+        };
+        $scope.blog=function()
+        {
+            $window.location.href='/blog';
+        };
+        $scope.contact=function()
+        {
+            $window.location.href='/contact';
+        };
+
+
+
+
+
 
             $scope.cost = function(amt,e) {
                 if(e.target.checked)
@@ -324,7 +343,7 @@
 
             };
 
-        alert("I am in controller");
+
 
         $scope.save_customer = function () {
 
@@ -344,7 +363,7 @@
             });
 
         }
-        alert("I am in controller");
+
         $scope.testing = {
             functional: '',
             unit : '',
@@ -363,7 +382,9 @@
         };
 
         $scope.Appdetail = function () {
-            alert("I am in Appdetail");
+
+
+
             var in_applicationName= $scope.applicationName;
 
             var in_functional = $scope.testing.functional;
@@ -426,7 +447,7 @@
             then(function (response) {
                 $window.location.href = '/customerdashboard';
             });
-            alert("I am in post bankdetail");
+
         }
 
         /*var maxValidator = function (testcases) {
