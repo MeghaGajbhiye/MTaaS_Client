@@ -374,11 +374,11 @@ exports.processfetch1 = function(req, res){
 };
 
 exports.processfetch = function(req, res){
-	_search=req.param("tname");
-	//console.log("uname is:"+ req.session.uname);
-	var getUser="select * from smsm_tester_info where username='"+tester_search+"'";
+	customer_search=req.param("custname");
+	console.log("uname is:"+ customer_search);
+	var getUser="select * from smsm_tester_info where username='"+customer_search+"'";
 
-	console.log("Query is: i am here inside processfetch1");
+	console.log("Query is: i am here inside processfetch");
 	console.log("Query is:"+getUser);
 	mysql.fetchData(function(err,results){
 				if(!err){

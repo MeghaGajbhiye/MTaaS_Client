@@ -89,8 +89,8 @@ app.get('/logoutsession',user.logoutsession);
 app.get('/developermyproject',user.developermyproject);
 
 app.get('/home2',user.home2);
-app.get('/processfetch1',user.processfetch1);
-app.get('/processfetch',user.processfetch);
+app.post('/processfetch1',user.processfetch1);
+app.post('/processfetch',user.processfetch);
 var MtaasRouteConfig = require('./routes/MtaasRouteConfig.js');
 new MtaasRouteConfig(app);
 

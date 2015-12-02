@@ -224,6 +224,16 @@ MtaasRouteConfig.prototype.addRoutes = function () {
             response.render('testerinfo_rate', { title : "Testify Conatct" });
         }
     });
+
+    self.routeTable.push({
+
+        requestType : 'get',
+        requestUrl : '/customer_addapp',
+        callbackFunction : function (request, response) {
+
+            response.render('customer_addapp', { title : "Testify Conatct" });
+        }
+    });
     self.routeTable.push({
 
         requestType : 'get',

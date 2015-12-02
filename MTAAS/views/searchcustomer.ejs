@@ -104,18 +104,14 @@
                                 <tbody>
                                 <tr ng-repeat="process in processes | filter: search" class="even gradeC">
                                     <td>{{index+1}}.</td>
-                                    <td><a href="#" ng-click="processfetch(process)">{{process.customer_username}}</a></td>
+                                    <td><a href=/customerview ng-click="processfetch(process)">{{process.customer_username}}</a></td>
                                     <td>{{process.app_name}}</td>
                                     <!--label ng-repeat="test in testinfo">
                                     <td>{{test.testing_type}}</td>
                                     <td>{{test.testing_tool}}</td>
                                     <td>{{test.testing_language}}</td>
                                     <td>{{test.testing_technology}}</td></label-->
-                                    <td class="info">
-                                        <div class="btn-group">
-                                            <button onclick="window.open('customerview');" type="button" class="btn btn-default" >View App</button>
-                                        </div>
-                                    </td>
+
                                 </tr>
                                 </tbody>
                             </table>
@@ -205,7 +201,7 @@
 
 
             //alert("Test process id after processfetch");
-            alert(process.process_id);
+            alert(process.customer_username);
             //var in_processid= $scope.process.process_id;
 
             //("Test process id:" + in_processid);
@@ -213,10 +209,10 @@
             $http({
                 method: 'POST',
                 url: '/processfetch',
-                data: {"processid": process.customer_username}
+                data: {"custname": process.customer_username}
             }).success(function(response){
                 // alert("yay");
-                $window.location.href='/processview';
+                $window.location.href='/customerview';
             }).error(function(error){
                 alert("ERROR VIEWING PROCESS REQUEST");
             });
