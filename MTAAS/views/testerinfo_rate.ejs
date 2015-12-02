@@ -16,107 +16,88 @@
 
     <title>Testify</title>
 
-    <!-- Bootstrap core CSS -->
-    <style>
 
-        html,
-        body {
-            overflow-x: hidden; /* Prevent scroll on narrow devices */
-        }
-        body {
-            padding-top: 70px;
-        }
-        footer {
-            padding: 30px 0;
-        }
-
-        @media screen and (max-width: 767px) {
-            .row-offcanvas {
-                position: relative;
-                -webkit-transition: all .25s ease-out;
-                -o-transition: all .25s ease-out;
-                transition: all .25s ease-out;
-            }
-
-            .row-offcanvas-right {
-                right: 0;
-            }
-
-            .row-offcanvas-left {
-                left: 0;
-            }
-
-            .row-offcanvas-right
-            .sidebar-offcanvas {
-                right: -50%; /* 6 columns */
-            }
-
-            .row-offcanvas-left
-            .sidebar-offcanvas {
-                left: -50%; /* 6 columns */
-            }
-
-            .row-offcanvas-right.active {
-                right: 50%; /* 6 columns */
-            }
-
-            .row-offcanvas-left.active {
-                left: 50%; /* 6 columns */
-            }
-
-            .sidebar-offcanvas {
-                position: absolute;
-                top: 0;
-                width: 50%; /* 6 columns */
-            }
-        }
-        .logoutLblPos{
-
-            position:fixed;
-            right:10px;
-            top:5px;
-        }
-
-    </style>
 
 </head>
 
 <body >
+
+<div class="brand">Testify</div>
+<div class="address-bar">San Jose State University | San Jose, CA 95112</div>
+<!-- Navigation -->
+<nav class="navbar navbar-default" role="navigation" >
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+            <a class="navbar-brand" href="index.html">Testify</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" data-ng-app="MtaaS" data-ng-controller="MtaaS">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/index">Home</a>
+                </li>
+                <li>
+                    <a href="/about">About</a>
+                </li>
+                <li>
+                    <a href="/blog">Blog</a>
+                </li>
+                <li>
+                    <a href="/contact">Contact</a>
+                </li>
+                <li>
+                    <a href="/login">Login</a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
 <div data-ng-app="MtaaS" data-ng-controller="MtaaS1">
 
-    <nav class="navbar navbar-fixed-top navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#" ng-click ="home">Acumen SIM</a>
-            </div>
-            <div id="navbar" class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="#" ng-click= "home()">Home</a></li>
-                    <li><a href="#" ng-click= "searchsupplier()">Search</a></li>
-                    <li class="active"><a href="#" ng-click= "processsupplier()">Process</a></li>
-                </ul>
-                <label class="logoutLblPos">
-                    <!--a type="submit" align="right" class="btn btn-success" ng-click="logoutsession()" role="button" >Logout</a-->
-                </label>
-            </div><!-- /.nav-collapse -->
-        </div><!-- /.container -->
-    </nav><!-- /.navbar -->
+
+
 
     <div class="container">
 
-        <div class="row row-offcanvas row-offcanvas-right">
+        <div class="row">
 
-            <div class="col-xs-12 col-sm-9">
+            <div class="col-sm-12">
                 <p class="pull-right visible-xs">
                     <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
                 </p>
                 <div class="jumbotron">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="#" ng-click ="home">Acumen SIM</a>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="#" ng-click= "home()">Home</a></li>
+                            <li><a href="#" ng-click= "searchsupplier()">Search</a></li>
+                            <li class="active"><a href="#" ng-click= "processsupplier()">Process</a></li>
+                        </ul>
+                        <label class="logoutLblPos">
+                            <!--a type="submit" align="right" class="btn btn-success" ng-click="logoutsession()" role="button" >Logout</a-->
+                        </label>
+                    </div><!-- /.nav-collapse -->
+                </div><!-- /.container -->
+
                     <div class="form-group">
                         <legend>Search Customer</legend>
                         <input type="text" ng-model = "search" placeholder="Enter customer name" class="form-control" typeahead-on-select="processSearch($process)">
@@ -296,6 +277,19 @@
         };
         $scope.home = function (){
             $window.location.href = '/home';
+        };
+
+        $scope.about=function()
+        {
+            $window.location.href='/about';
+        };
+        $scope.blog=function()
+        {
+            $window.location.href='/blog';
+        };
+        $scope.contact=function()
+        {
+            $window.location.href='/contact';
         }
 
     }]);
