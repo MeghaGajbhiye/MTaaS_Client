@@ -95,7 +95,7 @@
                                                     <form class="login-form ">
                                                         <h3 >Customer Details</h3><br><br>
                                                         <form action="#">
-                                                            <label>Company Name  <input type="text" placeholder="Company Name " required="required"ng-model="compname"/><br><br>
+                                                            <label>Company Name  <input type="text" placeholder="Company Name " ng-model="compname"/><br><br>
                                                                 Number of Employees  <input type="number" placeholder="Number of Employees"required="required" ng-model="emp" /><br><br>
                                                                 Job Title  <input type="text" placeholder="Job Title" required="required"ng-model="jobtitle" /><br><br>
                                                                 Company Email  <input type="text" placeholder="Company Email"required="required" ng-model="compemail" /><br><br>
@@ -111,7 +111,7 @@
                                                     <h3>Application Details</h3>
 
                                                     <b>Name of applications:</b>
-                                                    <Input type="text" placeholder="Application Name" ng-model="applicationName">
+                                                    <Input type="text" placeholder="Application Name" ng-model="applicationName" required="required">
                                                     <!--button type="submit" class="btn btn-default" ng-click="save_customer()">Save</button-->
 
                                                     <br><br>
@@ -214,6 +214,7 @@
                                                     <b>Number of Test Cases</b>
                                                     <!--Input type="number" placeholder="No. of Test Cases" ng-model="testcases"-->
                                                     <input type="number" placeholder="No. of Test Cases" ng-model="testcases" name="value" />
+
                                                     <br><br>
 
 
@@ -227,7 +228,9 @@
                                                     </div>
                                                     <br><br>
 
-                                                    <button type="submit" class="btn btn-default"  ng-click="Appdetail()">Save</button>
+
+
+                                                    <button type="submit" class="btn btn-default" ng-click="Appdetail()">Save</button>
 
 
                                                 </div>
@@ -239,10 +242,6 @@
                                                     <span style="color: green; font-size: 45px; line-height: 2;">{{annualCost}}</span><br>
 
                                                     <br><br>
-
-
-                                                    <button type="submit" class="btn btn-default">Agree</button>
-
 
                                                 </div>
 
@@ -380,13 +379,20 @@
             var in_urgency= $scope.days;
             var in_testcases= $scope.testcases;
 
+            var in_estimatedCost= $scope.cost_testcases(in_testcases);
+            if (in_applicationName == null || in_applicationName == "")
+            {
+                alert("Application name  cannot be empty!!");
+                return;
+            }
+
 
 
             $http({
 
                 method: 'POST',
                 url: '/Appdetail',
-                data: {"applicationName": in_applicationName, "testingtype": in_testing, "testingtool": in_tool, "language": in_language, "coding_lang": in_codinglanguage, "urgency": in_urgency,"testcases": in_testcases}
+                data: {"applicationName": in_applicationName, "testingtype": in_testing, "testingtool": in_tool, "language": in_language, "coding_lang": in_codinglanguage, "urgency": in_urgency,"testcases": in_testcases,"estimated_cost": in_estimatedCost}
             }).
             then(function (response) {
                 $window.location.href = '/';
@@ -424,7 +430,18 @@
             }
         };*/
 
-
+        $scope.cost_testcases=function(test){
+          var tests_cost=0;
+            alert("inside cost_testcases" + test);
+            if(test>50){
+             tests_cost=(test-50)*3;
+                alert("inside cost_testcases cost value" + tests_cost);
+               // $scope.cost(tests_cost,$event);
+                $scope.dollarAmmount = $scope.dollarAmmount + tests_cost;
+                $scope.annualCost = "$" + $scope.dollarAmmount + ".00";
+                return $scope.annualCost;
+            }
+        };
 
 
     }

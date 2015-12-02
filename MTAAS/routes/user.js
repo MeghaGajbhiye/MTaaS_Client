@@ -364,10 +364,11 @@ exports.Appdetail = function(req, res) {
 	var app_codelanguage = req.param("coding_lang");
 	var urgency = req.param("urgency");
 	var testcases = req.param("testcases");
+	var estimatedcost=req.param("estimated_cost");
 
 
 	//var myquery = "update app_info set customer_username='"+req.session.uname+"',app_name='"+app_name+"',testing_type='" + app_testingtype + "',testing_tool='" + app_testingtool + "',language='" + app_language + "',coding_language='" + app_codelanguage + "',urgency_factor='" +urgency+"',no_testcases=" +testcases+"";
-	var myquery = "insert into app_info(customer_username,app_name,testing_type,testing_tool,language,coding_language,urgency_factor,no_testcases) values('"+req.session.uname+"','"+app_name+"','" + app_testingtype + "','" + app_testingtool + "','" + app_language + "','" + app_codelanguage + "','" +urgency+"'," +testcases+")";
+	var myquery = "insert into app_info(customer_username,app_name,testing_type,testing_tool,language,coding_language,urgency_factor,no_testcases,estimated_cost) values('"+req.session.uname+"','"+app_name+"','" + app_testingtype + "','" + app_testingtool + "','" + app_language + "','" + app_codelanguage + "','" +urgency+"'," +testcases+",'"+estimatedcost+"')";
 
 	mysql.fetchData(function(err, results) {
 		if (err) {
