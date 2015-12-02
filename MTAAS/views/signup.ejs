@@ -50,19 +50,19 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="/index">Home</a>
                 </li>
                 <li>
-                    <a href="about.ejs">About</a>
+                    <a href="/about">About</a>
                 </li>
                 <li>
-                    <a href="blog.ejs">Blog</a>
+                    <a href="/blog">Blog</a>
                 </li>
                 <li>
-                    <a href="contact.ejs">Contact</a>
+                    <a href="/contact">Contact</a>
                 </li>
                 <li>
-                    <a href="contact.ejs">Login</a>
+                    <a href="/login">Login</a>
                 </li>
 
             </ul>
@@ -306,9 +306,24 @@
             });
         }
 
-
-
+        $scope.about=function()
+        {
+            $window.location.href='/about';
+        }
+        $scope.blog=function()
+        {
+            $window.location.href='/blog';
+        }
+        $scope.contact=function()
+        {
+            $window.location.href='/contact';
+        }
     }]);
+
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+
     </script>
 </body>
 </html>
