@@ -7,8 +7,8 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path')
-,serveStatic=require('serve-static');
+  , path = require('path');
+//,serveStatic=require('serve-static');
 
 var app = express();
 app.use(express.cookieParser());
@@ -23,7 +23,7 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
-app.use('/public/',serveStatic(__dirname+'/public/'));
+//app.use('/public/',serveStatic(__dirname+'/public/'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
@@ -33,15 +33,21 @@ if ('development'  === app.get('env')) {
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-app.get('/about',user.about);
-app.get('/blog',user.blog);
-app.get('/contact',user.contact);
+//app.get('/about',user.about);
+//app.get('/blog',user.blog);
+//app.get('/contact',user.contact);
+app.get('/customerdashboard',user.customerdashboard);
+app.get('/customersignup',user.customersignup);
+app.post('/Appdetail',user.Appdetail);
+app.post('/save_customer',user.save_customer);
 app.post('/signup_tester',user.signup_tester);
 app.get('/testerdashboard',user.testerdashboard);
 app.get('/testerinfo',user.testerinfo);
 app.get('/testerinfo1',user.testerinfo1);
+app.get('/testerinfo2',user.testerinfo2);
 app.post('/tester',user.tester);
 app.post('/bankdetail_tester',user.bankdetail_tester);
+app.post('/bankdetail',user.bankdetail_tester);
 
 app.post('/deviceinfo',user.deviceinfo);
 app.get('/testedapp',user.testedapp);
@@ -62,7 +68,10 @@ app.get('/customerinfo', user.customerinfo);
 app.get('/appinfo', user.appinfo);
 app.post('/save_customer',user.save_customer);
 app.get('/currentapp', user.currentapp);
+app.get('/searchtester', user.searchtester);
+app.get('/currentapp_customer', user.currentapp_customer);
 app.post('/sendrequest', user.sendrequest);
+app.post('/sendrequest2', user.sendrequest2);
 app.get('/customerview', user.customerview);
 //app.get('/logout', user.logout);
 app.get('/home1', user.home);

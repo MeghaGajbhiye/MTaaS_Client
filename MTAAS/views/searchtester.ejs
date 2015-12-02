@@ -34,107 +34,113 @@
 <body >
 <div class="brand">Testify</div>
 <div class="address-bar">San Jose State University | San Jose, CA 95112</div>
-   <!-- Navigation -->
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
-                <a class="navbar-brand" href="index.html">Business Casual</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/index">Home</a>
-                    </li>
-                    <li>
-                        <a href="/about">About</a>
-                    </li>
-                    <li>
-                        <a href="/blog">Blog</a>
-                    </li>
-                    <li>
-                        <a href="/contact">Contact</a>
-                    </li>
-                    <li>
-                        <a href="/login">Login</a>
-                    </li>
-
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+<!-- Navigation -->
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+            <a class="navbar-brand" href="index.html">Business Casual</a>
         </div>
-        <!-- /.container -->
-    </nav>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/index">Home</a>
+                </li>
+                <li>
+                    <a href="/about">About</a>
+                </li>
+                <li>
+                    <a href="/blog">Blog</a>
+                </li>
+                <li>
+                    <a href="/contact">Contact</a>
+                </li>
+                <li>
+                    <a href="/login">Login</a>
+                </li>
 
-    <div class="container" data-ng-app="MtaaS" data-ng-controller="MtaaS">
-
-        <div class="row row-offcanvas row-offcanvas-right">
-
-            <div class="col-xs-12 col-sm-9">
-                <p class="pull-right visible-xs">
-                    <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
-                </p>
-                <div class="jumbotron">
-                    <div class="form-group">
-                        <legend>Search</legend>
-                        <input type="text" ng-model = "search" placeholder="Enter customer name" class="form-control" typeahead-on-select="processSearch($process)">
-                    </div>
-                    <!--a type="submit" class="btn btn-success" href="#" ng-click="processsupplier()" role="button">Search Process</a><p></p-->
-                    <!-- Table -->
-                    <div class="panel-body">
-                        <div class="dataTable_wrapper">
-                            <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                <thead>
-                                <tr class="success">
-                                    <th>Index</th>
-                                    <th>Customer Name</th>
-                                    <th>App Name</th>
-                                    <th>show process</th>
-
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr ng-repeat="process in processes | filter: search" class="even gradeC">
-                                    <td>{{index+1}}.</td>
-                                    <td><a href="#" ng-click="processfetch(process)">{{process.customer_username}}</a></td>
-                                    <td>{{process.app_name}}</td>
-                                    <!--label ng-repeat="test in testinfo">
-                                    <td>{{test.testing_type}}</td>
-                                    <td>{{test.testing_tool}}</td>
-                                    <td>{{test.testing_language}}</td>
-                                    <td>{{test.testing_technology}}</td></label-->
-                                    <td class="info">
-                                        <div class="btn-group">
-                                            <button onclick="window.open('customerview');" type="button" class="btn btn-default" >View App</button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- Table End-->
-                    </div>
-
-                </div><!--/.col-xs-12.col-sm-9-->
-
-
-            </div><!--/row-->
+            </ul>
         </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
 
-        <hr>
-        <!-- search-->
+<div class="container" data-ng-app="MtaaS" data-ng-controller="MtaaS" >
+
+    <div class="row row-offcanvas row-offcanvas-right">
+
+        <div class="col-xs-12 col-sm-9">
+            <p class="pull-right visible-xs">
+                <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+            </p>
+            <div class="jumbotron">
+                <div class="form-group">
+                    <legend>Search</legend>
+                    <input type="text" ng-model = "search" placeholder="Enter customer name" class="form-control" typeahead-on-select="processSearch($process)">
+                </div>
+                <!--a type="submit" class="btn btn-success" href="#" ng-click="processsupplier()" role="button">Search Process</a><p></p-->
+                <!-- Table -->
+                <div class="panel-body">
+                    <div class="dataTable_wrapper">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                            <tr class="success">
+
+                                <th>Tester Name</th>
+                                <th>Tester Testing Type</th>
+                                <th>Tester Testing Tool</th>
+                                <th>Tester Testing Language</th>
+                                <th>Tester Testing OS</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="process in processes | filter: search" class="even gradeC">
+
+                                <td>{{process.username}}</td>
+                                <td>{{process.testing_type}}</td>
+                                <td>{{process.testing_tool}}</td>
+                                <td>{{process.coding_language}}</td>
+                                <td>{{process.testing_technology}}</td>
+                                <!--label ng-repeat="test in testinfo">
+                                <td>{{test.testing_type}}</td>
+                                <td>{{test.testing_tool}}</td>
+                                <td>{{test.testing_language}}</td>
+                                <td>{{test.testing_technology}}</td></label-->
+                                <td class="info">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default" ng-click="sendrequest2()" >Request</button>
+                                    </div>
+                                </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Table End-->
+                </div>
+
+            </div><!--/.col-xs-12.col-sm-9-->
+
+
+        </div><!--/row-->
+    </div>
+
+    <hr>
+    <!-- search-->
 
 
 
-    </div><!--/.container-->
+</div><!--/.container-->
 <footer>
     <div class="container">
         <div class="row">
@@ -168,24 +174,34 @@
         {
             $window.location.href='/contact';
         }
+        $scope.sendrequest2 = function () {
 
+            //alert("inside send request");
+            $http({
+                method: 'POST',
+                url: '/sendrequest2'
+            }).then(function (response) {
+                $window.location.href = '/customerdashboard';
 
-       // alert("I am in controller");
+            });
+        };
 
-        $scope.customerdetails = function() {
+        // alert("I am in controller");
+
+        $scope.testerinfo2 = function() {
             $http({
                 method: 'GET',
-                url: '/customerdetails'
+                url: '/testerinfo2'
             }).success(function(response){
-                //alert(JSON.stringify(response));
+                alert(JSON.stringify(response));
                 $scope.processes= JSON.parse(response.result);
                 //alert(processes.suppliername);
             }).error(function(error){
                 alert("ERROR VIEWING PROCESS REQUEST");
             });
         };
-        $scope.customerdetails();
-
+        $scope.testerinfo2();
+/*
         $scope.customerinfo = function() {
             $http({
                 method: 'GET',
@@ -198,8 +214,8 @@
                 alert("ERROR VIEWING PROCESS REQUEST");
             });
         };
-        $scope.customerinfo();
-
+       // $scope.customerinfo();
+*/
 
         $scope.processfetch = function(process) {
 

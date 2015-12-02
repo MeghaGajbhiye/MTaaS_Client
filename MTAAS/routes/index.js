@@ -4,7 +4,7 @@
  */
 
 exports.index = function(req, res){
-  res.render('index', { title: 'express' });
+  res.render('customersignup', { title: 'express' });
 };
 
 

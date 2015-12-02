@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Customer Info</title>
+
+    <!-- Bootstrap Core CSS -->
+    <!-- link href="css/bootstrap.min.css" rel="stylesheet" -->
+
+    <!-- Custom CSS -->
+    <link href="views/css/business-casual.css" rel="stylesheet">
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700,100italic,300italic,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+
+<div class="brand">Testify</div>
+<div class="address-bar">San Jose State University | San Jose, CA 95112</div>
+
+<!-- Navigation -->
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- navbar-brand is hidden on larger screens, but visible when the menu is collapsed -->
+            <a class="navbar-brand" href="index.html">Testify</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>
+                    <a href="about.ejs">About</a>
+                </li>
+                <li>
+                    <a href="blog.ejs">Blog</a>
+                </li>
+                <li>
+                    <a href="contact.html">Contact</a>
+                </li>
+                <li>
+                    <a href="contact.html">Login</a>
+                </li>
+
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+<div class="container"   ng-app="MtaaS" ng-controller="MtaaS">
+
+    <div class="row">
+        <div class="box">
+            <div class="col-lg-12 text-center">
+                <div id="carousel-example-generic" class="carousel slide">
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-4 col-sm-offset-1">
+                                    <div class="login-form"><!--login form-->
+                                        <div class="container">
+                                            <h2 align="left">Customer Information</h2>
+                                            <ul class="nav nav-tabs">
+                                                <li class="active"><a data-toggle="tab" href="#CustomerDetail">Customer Details</a></li>
+                                                <li><a data-toggle="tab" href="#AppDetail">Application Details</a></li>
+                                                <li><a data-toggle="tab" href="#CostDetails">Cost Summary</a></li>
+                                                <li><a data-toggle="tab" href="#BankDetails">Bank Details</a></li>
+                                            </ul>
+
+                                            <div class="tab-content">
+                                                <div id="CustomerDetail" class="tab-pane fade in active col-sm-4">
+                                                    <form class="login-form ">
+                                                        <h3 >Customer Details</h3><br><br>
+                                                        <form action="#">
+                                                            <label>Company Name  <input type="text" placeholder="Company Name " required="required"ng-model="compname"/><br><br>
+                                                                Number of Employees  <input type="number" placeholder="Number of Employees"required="required" ng-model="emp" /><br><br>
+                                                                Job Title  <input type="text" placeholder="Job Title" required="required"ng-model="jobtitle" /><br><br>
+                                                                Company Email  <input type="text" placeholder="Company Email"required="required" ng-model="compemail" /><br><br>
+                                                                Company Phone Number  <input type="number" placeholder="Phone Number" ng-model="phone" /><br><br>
+                                                                <button type="submit" class="btn btn-default" ng-click="save_customer()">Next</button>
+                                                            </label>
+                                                        </form>
+                                                    </form>
+
+                                                </div>
+
+                                                <div id="AppDetail" class="tab-pane fade">
+                                                    <h3>Application Details</h3>
+
+                                                    <b>Name of applications:</b>
+                                                    <Input type="text" placeholder="Application Name" ng-model="applicationName">
+                                                    <!--button type="submit" class="btn btn-default" ng-click="save_customer()">Save</button-->
+
+                                                    <br><br>
+
+
+                                                    <b>Types Of Testing:</b>
+                                                    <div class="checkbox">
+                                                        <label class="checkbox-inline"><input type="checkbox"
+                                                                                              name="functional"
+                                                                                              ng-model="testing.functional" ng-true-value="'Functional'" ng-false-value="''" ng-click="cost(100,$event)"/>Functional</label>
+                                                    </div>
+
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="unit"
+                                                                      ng-model="testing.unit" ng-model="testing.functional" ng-true-value="'Unit'" ng-false-value="''" ng-click="cost(100,$event)"/>Unit</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="performance"
+                                                                      ng-model="testing.performance" ng-true-value="'performance'" ng-false-value="''" ng-click="cost(100,$event)"/>Performance</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="usability"
+                                                                      ng-model="testing.usability" ng-true-value="'usability'" ng-false-value="''"/>Usability</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="security"
+                                                                      ng-model="testing.security" ng-true-value="'security'" ng-false-value="''"/>Security</label>
+                                                    </div>
+
+                                                    <!--br><br>
+                                                        <label>You have selected : {{testing.functional}}   {{testing.unit}}   {{testing.performance}}   {{testing.usability}}   {{testing.security}}</label><br/>
+                                                    <br><br-->
+
+                                                    <br><br>
+
+                                                    <b>Testing tools: </b>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="Tool A"
+                                                                      ng-model="testing.toolA" ng-true-value="'toolA'" ng-false-value="''" ng-click="cost(25,$event)">Tool A</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="Tool B"
+                                                                      ng-model="testing.toolB" ng-true-value="'toolB'" ng-false-value="''" ng-click="cost(25,$event)">Tool B</label>
+                                                    </div>
+                                                    <div class="checkbox disabled">
+                                                        <label><input type="checkbox" name="Tool C"
+                                                                      ng-model="testing.toolC" ng-true-value="'toolC'" ng-false-value="''" ng-click="cost(25,$event)">Tool C</label>
+                                                    </div>
+                                                    <!--br><br>
+                                                    <label>You have selected : {{testing.toolA}}   {{testing.toolB}}   {{testing.toolC}}   </label><br/>
+                                                    <br><br-->
+
+
+                                                    <br><br>
+                                                    <b>Testing Language: </b>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="english"
+                                                                      ng-model="testing.english" ng-true-value="'english'" ng-false-value="''">English</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="french"
+                                                                      ng-model="testing.french" ng-true-value="'french'" ng-false-value="''">French</label>
+                                                    </div>
+                                                    <div class="checkbox disabled">
+                                                        <label><input type="checkbox" name="spanish"
+                                                                      ng-model="testing.spanish" ng-true-value="'spanish'" ng-false-value="''">Spanish</label>
+                                                    </div>
+                                                    <!--br><br>
+                                                    <label>You have selected : {{testing.toolA}}   {{testing.toolB}}   {{testing.toolC}}   </label><br/>
+                                                    <br><br-->
+
+
+                                                    <br><br>
+                                                    <b>Preferred Coding Language: </b>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="java"
+                                                                      ng-model="testing.java" ng-true-value="'java'" ng-false-value="''">Java</label>
+                                                    </div>
+                                                    <div class="checkbox">
+                                                        <label><input type="checkbox" name="javascript"
+                                                                      ng-model="testing.javascript" ng-true-value="'javascript'" ng-false-value="''">Javascript</label>
+                                                    </div>
+                                                    <div class="checkbox disabled">
+                                                        <label><input type="checkbox" name="ruby"
+                                                                      ng-model="testing.ruby" ng-true-value="'ruby'" ng-false-value="''">Ruby</label>
+                                                    </div>
+                                                    <!--br><br>
+                                                    <label>You have selected : {{testing.toolA}}   {{testing.toolB}}   {{testing.toolC}}   </label><br/>
+                                                    <br><br-->
+
+
+                                                    <br><br>
+
+
+                                                    <b>Urgency Factor</b>
+                                                    <Input type="number" placeholder="No. of Days" ng-model="days">
+
+                                                    <br><br>
+
+                                                    <b>Number of Test Cases</b>
+                                                    <!--Input type="number" placeholder="No. of Test Cases" ng-model="testcases"-->
+                                                    <input type="number" placeholder="No. of Test Cases" ng-model="testcases" name="value" />
+                                                    <br><br>
+
+
+                                                    <div class="form-inline">
+
+                                                        <div class="form-group">
+                                                            <input type="file" name="files[]" id="js-upload-files">
+                                                        </div><br><br>
+                                                        <button type="submit" class="btn btn-sm btn-primary" id="js-upload-submit">Upload App</button>
+
+                                                    </div>
+                                                    <br><br>
+
+                                                    <button type="submit" class="btn btn-default"  ng-click="Appdetail()">Save</button>
+
+
+                                                </div>
+
+                                                <div id="CostDetails" class=" col-sm-4 tab-pane fade">
+                                                    <h3>Cost Summary</h3>
+
+                                                    <b>Total Cost: </b>
+                                                    <span style="color: green; font-size: 45px; line-height: 2;">{{annualCost}}</span><br>
+
+                                                    <br><br>
+
+
+                                                    <button type="submit" class="btn btn-default">Agree</button>
+
+
+                                                </div>
+
+
+                                                <div id="BankDetails" class="tab-pane fade col-sm-4">
+                                                    <h3>Bank Account Details</h3><br>
+
+                                                    <div class="btn-group">
+
+                                                        Bank Name
+                                                        <Input type="text" placeholder="Enter Bank Name"  ng-model="bankname" >
+
+                                                        </Span>
+                                                        </span>
+                                                    </div><br><br>
+
+                                                     <Span>
+                                                      Account Holder Name
+                                                      <Input type="text" placeholder="Enter Account Holder Name"  ng-model="accountname" >
+
+                                                  </Span><br><br>
+
+                                                     <Span>
+                                                      Account Number
+                                                      <Input type="number" placeholder="Account Number" ng-model="accountnumber">
+                                                         <button type="submit" class="btn btn-default" ng-click="bankdetail()">Submit</button>
+
+                                                  </Span><br><br>
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div><!--/login form-->
+                                </div>
+
+
+                                <!-- Controls -->
+                                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+
+                                </a>
+                                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+
+                                </a>
+                            </div>
+                            <h2 class="brand-before">
+                                <small>Welcome to</small>
+                            </h2>
+                            <h1 class="brand-name">Testify</h1>
+                            <hr class="tagline-divider">
+                            <h2>
+                                <small>By
+                                    <strong>Team 9</strong>
+                                </small>
+                            </h2>
+                        </div>
+                    </div> <!-- carousel inner -->
+                </div> <!-- carousel-example-generic -->
+            </div> <!-- col-lg-12 text-center-->
+        </div> <!-- box -->
+    </div> <!--row -->
+</div> <!-- container -->
+
+<script>
+    var app=angular.module('MtaaS', [])
+    app.controller('MtaaS', ['$scope', '$http', '$window', function ( $scope,$http,$window)
+    {
+
+
+            $scope.dollarAmmount = 0.00;
+            $scope.annualCost = "$" + $scope.dollarAmmount + ".00";
+
+            $scope.cost = function(amt,e) {
+                if(e.target.checked)
+                    $scope.dollarAmmount = $scope.dollarAmmount + amt;
+                else
+                    $scope.dollarAmmount = $scope.dollarAmmount - amt;
+                $scope.annualCost = "$" + $scope.dollarAmmount + ".00";
+
+            };
+
+        alert("I am in controller");
+
+        $scope.save_customer = function () {
+
+            var comp_name= $scope.compname;
+            var comp_email = $scope.compemail;
+            var comp_employees = $scope.emp;
+            var job_title = $scope.jobtitle;
+            var in_phone = $scope.phone;
+
+            $http({
+                method: 'POST',
+                url: '/save_customer',
+                data: {"company_name": comp_name, "company_email": comp_email, "company_emp": comp_employees, "job_title": job_title,"in_phone":in_phone}
+            }).
+            then(function (response) {
+                $window.location.href = '/';
+            });
+
+        }
+        alert("I am in controller");
+        $scope.testing = {
+            functional: '',
+            unit : '',
+            performance : '',
+            usability : '',
+            security : '',
+            toolA : '',
+            toolB : '',
+            toolC : '',
+            english: '',
+            french: '',
+            spanish: '',
+            java: '',
+            javascript: '',
+            ruby:''
+        };
+
+        $scope.Appdetail = function () {
+            alert("I am in Appdetail");
+            var in_applicationName= $scope.applicationName;
+
+            var in_functional = $scope.testing.functional;
+
+            var in_unit = $scope.testing.unit;
+            //  var in_testing = in_functional.concat(in_unit, $scope.testing.performance, $scope.testing.usability, $scope.testing.security);
+            var in_testing =in_functional +" "+ in_unit+" "+$scope.testing.performance+" "+ $scope.testing.usability+ " "+ $scope.testing.security;
+
+            var in_tool = $scope.testing.toolA+" "+ $scope.testing.toolB+" "+ $scope.testing.toolC;
+
+            var in_language = $scope.testing.english+" "+$scope.testing.french+" "+ $scope.testing.spanish;
+            var in_codinglanguage = $scope.testing.java+" "+$scope.testing.javascript+" "+ $scope.testing.ruby;
+            var in_urgency= $scope.days;
+            var in_testcases= $scope.testcases;
+
+
+
+            $http({
+
+                method: 'POST',
+                url: '/Appdetail',
+                data: {"applicationName": in_applicationName, "testingtype": in_testing, "testingtool": in_tool, "language": in_language, "coding_lang": in_codinglanguage, "urgency": in_urgency,"testcases": in_testcases}
+            }).
+            then(function (response) {
+                $window.location.href = '/';
+            });
+            alert("I am in post appdetail");
+
+        }
+        $scope.bankdetail = function () {
+
+
+            var in_bankname = $scope.bankname;
+            var in_accountname = $scope.accountname;
+            var in_accountnumber = $scope.accountnumber;
+
+            $http({
+                method: 'POST',
+                url: '/bankdetail',
+                data: {"bank_name": in_bankname, "account_name": in_accountname, "account_number": in_accountnumber}
+            }).
+            then(function (response) {
+                $window.location.href = '/customerdashboard';
+            });
+            alert("I am in post bankdetail");
+        }
+
+        /*var maxValidator = function (testcases) {
+            var max = scope.$eval(attr.ngMax) || Infinity;
+            alert("max" + max);
+            if (!isEmpty(testcases) && testcases > max) {
+                $scope.cost((testcases-max)*2,$event);
+
+            } else {
+                ctrl.$setValidity('ngMax', true);
+                $scope.cost(testcases,$event);
+            }
+        };*/
+
+
+
+
+    }
+
+
+
+    ]);
+
+
+</script>
+
+
+</body>
+</html>

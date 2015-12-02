@@ -119,6 +119,26 @@ exports.bankdetail_tester = function(req, res) {
 };
 
 
+exports.bankdetail = function(req, res) {
+
+	var bank_name = req.param("bank_name");
+	var account_name = req.param("account_name");
+	var account_number = req.param("account_number");
+
+
+	var myquery = "update smsm_customer_info set bank_name='"+bank_name+"',account_name='" + account_name + "',account_no='" + account_number+"' where username = '"+req.session.uname+"'";
+
+	mysql.fetchData(function(err, results) {
+		if (err) {
+			throw err;
+		}
+		else {
+			console.log("I am here in bank tester function");
+			res.render('customerboard');
+		}
+	},myquery);
+};
+
 
 
 
@@ -161,7 +181,7 @@ exports.showlogin = function(req, res){
 	//Get Customer details in search page
 
 exports.customerdetails = function(req, res){
-	var getUser="select * from app_info";
+	var getUser="select * from app_info where app_name is not null";
 
 	console.log("Query is:"+getUser);
 	mysql.fetchData(function(err,results){
@@ -183,19 +203,6 @@ exports.customerdetails = function(req, res){
 
 //fetch for test
 
-exports.save_customer = function(req, res) {
-	console.log(req.param("company_name", "company_email", "company_emp", "job_title", "in_phone"));
-	var company_name = req.param("company_name");
-	var company_email = req.param("company_email");
-	var company_emp = req.param("company_emp");
-	var job_title = req.param("job_title");
-	var in_phone = req.param("in_phone");
-
-	console.log("company_emp: " + company_emp);
-	//var myquery = "insert into developersignup (firstname1,lastname1,email1,username1,password1, cpassword1, sex1,projecttype1,type1)values ('" + fname + "','" + lname + "','" + email + "','" + name + "','" + password + "','" + cpassword + "','" + sex + "','" + projecttype + "','" + projectname + "')";
-	var myquery = "insert into smsm_customer_info(username,comp_name,no_employees,job_title,comp_pno,comp_email)values ('"+req.session.uname+"','" + company_name + "','" + company_emp + "','" + job_title + "','" + in_phone + "','" + company_email + "')";
-};
-
 exports.appinfo = function(req, res){
 
 	var getUser="select * from app_info where status='submitted'";
@@ -216,8 +223,26 @@ exports.appinfo = function(req, res){
 			,getUser);
 };
 
+//to find current app of customer
+exports.currentapp_customer = function(req, res){
 
+	var getUser="select * from app_info where customer_username='"+req.session.uname+"' and status='pending'";
 
+	console.log("Query is: i am here inside currentapp_customer");
+	console.log("Query is:"+getUser);
+	mysql.fetchData(function(err,results){
+				if(!err){
+					console.log(results);
+					var jsonstr=JSON.stringify(results);
+					console.log("Successfully Fetched");
+					res.send({"result":JSON.stringify(results)});
+				}
+				else {
+					console.log(err);
+				}
+			}
+			,getUser);
+};
 
 exports.currentapp = function(req, res){
 
@@ -284,6 +309,76 @@ exports.testerinfo = function(req, res){
 			,getUser);
 };
 
+exports.testerinfo2 = function(req, res){
+	console.log("uname is:"+ req.session.uname);
+	var getUser="select * from smsm_tester_info where working_status='unallocated'";
+
+	console.log("Query is: i am here inside testerinfo2");
+	console.log("Query is:"+getUser);
+	mysql.fetchData(function(err,results){
+				if(!err){
+					console.log(results);
+					var jsonstr=JSON.stringify(results);
+					console.log("Successfully Fetched");
+					res.send({"result":JSON.stringify(results)});
+				}
+				else {
+					console.log(err);
+				}
+			}
+			,getUser);
+};
+
+
+exports.save_customer = function(req, res) {
+	console.log(req.param("company_name", "company_email", "company_emp", "job_title", "in_phone"));
+	var company_name = req.param("company_name");
+	var company_email = req.param("company_email");
+	var company_emp = req.param("company_emp");
+	var job_title = req.param("job_title");
+	var in_phone = req.param("in_phone");
+
+	console.log("company_emp: " + company_emp);
+	//var myquery = "insert into developersignup (firstname1,lastname1,email1,username1,password1, cpassword1, sex1,projecttype1,type1)values ('" + fname + "','" + lname + "','" + email + "','" + name + "','" + password + "','" + cpassword + "','" + sex + "','" + projecttype + "','" + projectname + "')";
+	var myquery = "update smsm_customer_info set comp_name='" + company_name + "',no_employees='" + company_emp + "',job_title='" + job_title + "',comp_pno='" + in_phone + "',comp_email= '" + company_email + "' where username='" + req.session.uname + "'";
+
+	mysql.fetchData(function(err, results) {
+		if (err) {
+			throw err;
+		}
+		else {
+			console.log("I am here in save_customer function");
+
+		}
+	},myquery);
+
+};
+
+exports.Appdetail = function(req, res) {
+
+	console.log(req.param("applicationName","testingtype","testingtool","language","coding_lang","urgency","testcases"));
+	var app_name = req.param("applicationName");
+	var app_testingtype = req.param("testingtype");
+	var app_testingtool = req.param("testingtool");
+	var app_language = req.param("language");
+	var app_codelanguage = req.param("coding_lang");
+	var urgency = req.param("urgency");
+	var testcases = req.param("testcases");
+
+
+	//var myquery = "update app_info set customer_username='"+req.session.uname+"',app_name='"+app_name+"',testing_type='" + app_testingtype + "',testing_tool='" + app_testingtool + "',language='" + app_language + "',coding_language='" + app_codelanguage + "',urgency_factor='" +urgency+"',no_testcases=" +testcases+"";
+	var myquery = "insert into app_info(customer_username,app_name,testing_type,testing_tool,language,coding_language,urgency_factor,no_testcases) values('"+req.session.uname+"','"+app_name+"','" + app_testingtype + "','" + app_testingtool + "','" + app_language + "','" + app_codelanguage + "','" +urgency+"'," +testcases+")";
+
+	mysql.fetchData(function(err, results) {
+		if (err) {
+			throw err;
+		}
+		else {
+			console.log("I am here in Appdetail function");
+
+		}
+	},myquery);
+};
 
 
 exports.customerinfo = function(req, res){
@@ -334,6 +429,11 @@ exports.testerinfo1 = function(req, res){
 		exports.developermyproject = function(req, res){
 			  res.render('developermyproject');
 			};
+
+//search tester in customer dashboard
+exports.searchtester = function(req, res){
+	res.render('searchtester');
+};
 //CALL DEVELOPER PROFILE
 			exports.home2 = function(req, res){
 				  res.render('home');
@@ -351,6 +451,10 @@ exports.showsignup = function(req, res){
 				  res.render('terms');
 				};
 
+//customerdashboard
+exports.customerdashboard = function(req, res) {
+	res.render('customerdashboard');
+};
 
 //customerdashboard
 exports.customerdetail = function(req, res) {
@@ -360,6 +464,13 @@ exports.customerdetail = function(req, res) {
 exports.customerview = function(req, res) {
 	res.render('customerview');
 };
+
+
+//cutsomer signup
+exports.customersignup = function(req, res) {
+	res.render('customersignup');
+};
+
 
 //signin edited
 exports.signin = function(req, res){
@@ -385,8 +496,9 @@ exports.signin = function(req, res){
 							throw err;
 						}
 						else {
+							console.log("results.length" + results.length);
 							if (results.length > 0) {
-								console.log("results.length" +results.length);
+
 								res.send({"status": 199}); //testerdashboard
 							}
 
@@ -398,13 +510,14 @@ exports.signin = function(req, res){
 					},myquery1);
 				}
 				else if (role == 'customer') {
-					var myquery2 = "Select username from  smsm_customer_info where username = '" + name + "' and app_name is not null";
+					var myquery2 = "Select app_name from  app_info where customer_username = '" + name + "'";
 					mysql.fetchData(function (err, results) {
 						if (err) {
 							throw err;
 						}
 						else {
 							if (results.length > 0) {
+								console.log("results customer.length" +results.length);
 								res.send({"status": 198}); //customerdashboard
 							}
 							else {
@@ -692,7 +805,7 @@ mysql.fetchData(function(err, results) {
 								} else {
 
 									//////
-									var myquery2 = "insert into smsm_tester_info(username) values ('" + name + "')";
+									var myquery2 = "insert into smsm_tester_info(username,working_status) values ('" + name + "','unallocated')";
 
 									mysql.fetchData(function (err, results) {
 										if (err) {
@@ -821,6 +934,27 @@ exports.developersignup = function(req, res) {
 	   
 	   
 	   	};
+
+exports.sendrequest2 = function(req, res){
+
+	console.log("Entry successfullymade in sendrequest2");
+	var tester_name=req.param("tname");
+
+	var myquery = "update app_info set customer_request = concat(customer_request, ' "+tester_name+"') where customer_username = '"+req.session.uname+"' and app_name='"+appname+"'";
+
+	mysql.fetchData(function(err, results) {
+		if (err) {
+			throw err;
+		} else {
+			console.log("Entry successfully made in login table");
+
+			res.render('searchcustomer');
+		}
+	}, myquery);
+
+
+};
+
 
 exports.sendrequest = function(req, res){
 
