@@ -52,7 +52,9 @@ app.post('/bankdetail',user.bankdetail_tester);
 
 app.post('/deviceinfo',user.deviceinfo);
 app.get('/testedapp',user.testedapp);
+app.get('/testedapp1',user.testedapp1);
 app.get('/customerdetail',user.customerdetail);
+//app.get('/customer_pay',user.customer_pay);
 app.post('/signup_customer',user.signup_customer);
 app.post('/developersignup',user.developersignup);
 app.post('/signin',user.signin);
@@ -66,6 +68,7 @@ app.get('/username',user.username );
 app.get('/testerdetail', user.testerdetail);
 app.get('/customerdetails', user.customerdetails);
 app.get('/customerinfo', user.customerinfo);
+app.get('/customerinfo2', user.customerinfo2);
 app.get('/appinfo', user.appinfo);
 app.post('/save_customer',user.save_customer);
 app.get('/currentapp', user.currentapp);
@@ -86,7 +89,8 @@ app.get('/logoutsession',user.logoutsession);
 app.get('/developermyproject',user.developermyproject);
 
 app.get('/home2',user.home2);
-
+app.get('/processfetch1',user.processfetch1);
+app.get('/processfetch',user.processfetch);
 var MtaasRouteConfig = require('./routes/MtaasRouteConfig.js');
 new MtaasRouteConfig(app);
 

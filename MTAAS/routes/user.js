@@ -1,5 +1,6 @@
 var mysql = require('./mysql');
 var customer_search;
+var tester_search;
 /*
  * GET users listing.
  */
@@ -226,7 +227,7 @@ exports.appinfo = function(req, res){
 //to find current app of customer
 exports.currentapp_customer = function(req, res){
 
-	var getUser="select * from app_info where customer_username='"+req.session.uname+"' and status='pending'";
+	var getUser="select * from app_info where customer_username='"+req.session.uname+"' and (status='pending' or status='submitted')";
 
 	console.log("Query is: i am here inside currentapp_customer");
 	console.log("Query is:"+getUser);
@@ -284,6 +285,47 @@ exports.testedapp = function(req, res){
 			,getUser);
 };
 
+exports.testedapp1 = function(req, res){
+	console.log("uname is:"+ req.session.uname);
+	var getUser="select * from app_info where customer_username='"+req.session.uname+"'and status= 'completed' and payment='NOT PAID'";
+
+	console.log("Query is: i am here inside testedapp1");
+	console.log("Query is:"+getUser);
+	mysql.fetchData(function(err,results){
+				if(!err){
+					console.log(results);
+					var jsonstr=JSON.stringify(results);
+					console.log("Successfully Fetched");
+					res.send({"result":JSON.stringify(results)});
+				}
+				else {
+					console.log(err);
+				}
+			}
+			,getUser);
+};
+
+
+
+exports.customerinfo2 = function(req, res){
+	console.log("uname is:"+ req.session.uname);
+	var getUser="select * from smsm_customer_info where username='"+req.session.uname+"'";
+
+	console.log("Query is: i am here inside customerinfo2");
+	console.log("Query is:"+getUser);
+	mysql.fetchData(function(err,results){
+				if(!err){
+					console.log(results);
+					var jsonstr=JSON.stringify(results);
+					console.log("Successfully Fetched");
+					res.send({"result":JSON.stringify(results)});
+				}
+				else {
+					console.log(err);
+				}
+			}
+			,getUser);
+};
 
 
 
@@ -308,6 +350,52 @@ exports.testerinfo = function(req, res){
 			}
 			,getUser);
 };
+
+
+exports.processfetch1 = function(req, res){
+	tester_search=req.param("tname");
+	//console.log("uname is:"+ req.session.uname);
+	var getUser="select * from smsm_tester_info where username='"+tester_search+"'";
+
+	console.log("Query is: i am here inside processfetch1");
+	console.log("Query is:"+getUser);
+	mysql.fetchData(function(err,results){
+				if(!err){
+					console.log(results);
+					var jsonstr=JSON.stringify(results);
+					console.log("Successfully Fetched");
+					res.send({"result":JSON.stringify(results)});
+				}
+				else {
+					console.log(err);
+				}
+			}
+			,getUser);
+};
+
+exports.processfetch = function(req, res){
+	_search=req.param("tname");
+	//console.log("uname is:"+ req.session.uname);
+	var getUser="select * from smsm_tester_info where username='"+tester_search+"'";
+
+	console.log("Query is: i am here inside processfetch1");
+	console.log("Query is:"+getUser);
+	mysql.fetchData(function(err,results){
+				if(!err){
+					console.log(results);
+					var jsonstr=JSON.stringify(results);
+					console.log("Successfully Fetched");
+					res.send({"result":JSON.stringify(results)});
+				}
+				else {
+					console.log(err);
+				}
+			}
+			,getUser);
+};
+
+
+
 
 exports.testerinfo2 = function(req, res){
 	console.log("uname is:"+ req.session.uname);
@@ -354,6 +442,9 @@ exports.save_customer = function(req, res) {
 
 };
 
+
+
+
 exports.Appdetail = function(req, res) {
 
 	console.log(req.param("applicationName","testingtype","testingtool","language","coding_lang","urgency","testcases"));
@@ -365,10 +456,26 @@ exports.Appdetail = function(req, res) {
 	var urgency = req.param("urgency");
 	var testcases = req.param("testcases");
 	var estimatedcost=req.param("estimated_cost");
+	var tester_sal;
+	var Amount_per_testcase= estimatedcost/(2*testcases);
+/*
+	if (tester_rating<4){
+		tester_sal=testcases*.6*Amount_per_testcase;
+	}
+	else if (tester_rating<7 && tester_rating>3)
+	{
+		tester_sal=testcases*.8*Amount_per_testcase;
+	}
+	else if (tester_rating>6 && tester_rating<11)
+	{
+		tester_sal=testcases*Amount_per_testcase;
+	}
+*/
+var Amount_left=estimatedcost-tester_sal;
 
 
 	//var myquery = "update app_info set customer_username='"+req.session.uname+"',app_name='"+app_name+"',testing_type='" + app_testingtype + "',testing_tool='" + app_testingtool + "',language='" + app_language + "',coding_language='" + app_codelanguage + "',urgency_factor='" +urgency+"',no_testcases=" +testcases+"";
-	var myquery = "insert into app_info(customer_username,app_name,testing_type,testing_tool,language,coding_language,urgency_factor,no_testcases,estimated_cost) values('"+req.session.uname+"','"+app_name+"','" + app_testingtype + "','" + app_testingtool + "','" + app_language + "','" + app_codelanguage + "','" +urgency+"'," +testcases+",'"+estimatedcost+"')";
+	var myquery = "insert into app_info(customer_username,app_name,testing_type,testing_tool,language,coding_language,urgency_factor,no_testcases,estimated_cost,status) values('"+req.session.uname+"','"+app_name+"','" + app_testingtype + "','" + app_testingtool + "','" + app_language + "','" + app_codelanguage + "','" +urgency+"'," +testcases+",'"+estimatedcost+"','submitted')";
 
 	mysql.fetchData(function(err, results) {
 		if (err) {
@@ -451,6 +558,11 @@ exports.showsignup = function(req, res){
 			exports.terms = function(req, res){
 				  res.render('terms');
 				};
+
+
+exports.terms = function(req, res){
+	res.render('customer_pay');
+};
 
 //customerdashboard
 exports.customerdashboard = function(req, res) {
@@ -945,7 +1057,7 @@ exports.sendrequest2 = function(req, res){
 	console.log("Entry successfullymade in sendrequest2");
 	var tester_name=req.param("tname");
 
-	var myquery = "update app_info set customer_request = concat(customer_request, ' "+tester_name+"') where customer_username = '"+req.session.uname+"' and app_name='"+appname+"'";
+	var myquery = "update app_info set customer_request = concat(customer_request, ' "+tester_name+"') where customer_username = '"+req.session.uname+"";
 
 	mysql.fetchData(function(err, results) {
 		if (err) {

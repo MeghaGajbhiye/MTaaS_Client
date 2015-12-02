@@ -3,9 +3,9 @@ var mysql = require('mysql');
 
 function getConnection(){
 	var connection = mysql.createConnection({
-	    host     : 'clouddb.cqmlai61twwa.us-west-1.rds.amazonaws.com',
+	    host     : '127.0.0.1',
 	    user     : 'root',
-	    password : 'cloud123',
+	    password : 'mysql@123',
 	    database : 'smsm_cloud',
 	    port	 : 3306
 	});

@@ -129,27 +129,34 @@
                                 <thead>
                                 <tr class="success">
                                     <th>Index</th>
-                                    <th>Status</th>
+                                    <th>Customer Name</th>
                                     <th>App Name</th>
+                                    <th>Testing Type</th>
+                                    <th>Testing Tool</th>
+                                    <th>Testing Language</th>
+                                    <th>Testing Technology</th>
 
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr ng-repeat="process in currentapp_customer | filter: search" class="even gradeC">
+                                <tr ng-repeat="test in testinfo | filter: search" class="even gradeC">
                                     <td>{{index+1}}.</td>
-                                    <td><a href=/app_status target="_blank">{{process.status}}</a></td>
-                                    <td>{{process.app_name}}</td>
-                                    <!--label ng-repeat="test in testinfo">
+                                    <td>{{test.customer_username}}</td>
+                                    <td>{{test.app_name}}</td>
                                     <td>{{test.testing_type}}</td>
                                     <td>{{test.testing_tool}}</td>
-                                    <td>{{test.testing_language}}</td>
-                                    <td>{{test.testing_technology}}</td></label-->
+                                    <td>{{test.coding_language}}</td>
+                                    <td>{{test.testing_technology}}</td>
                                     <td class="info">
                                         <div class="btn-group">
-                                            <button onclick="window.open('app_status');" type="button" class="btn btn-default" >App Status</button>
+                                            <button type="button" class="btn btn-default" ng-click="sendrequest()" >Request</button>
                                         </div>
                                     </td>
+
+
                                 </tr>
+
+
                                 </tbody>
                             </table>
                         </div>
@@ -179,19 +186,6 @@
     {
         // alert("I am in controller");
 
-        $scope.currentapp_customer = function() {
-            $http({
-                method: 'GET',
-                url: '/currentapp_customer'
-            }).success(function(response){
-                alert("curfrentapp customer****************************************************************" + JSON.stringify(response));
-                $scope.currentapp_customer= JSON.parse(response.result);
-                //alert(processes.suppliername);
-            }).error(function(error){
-                alert("ERROR VIEWING PROCESS REQUEST");
-            });
-        };
-        $scope.currentapp_customer();
 
         $scope.customerinfo = function() {
             $http({
@@ -200,32 +194,22 @@
             }).success(function(response){
                 alert(JSON.stringify(response));
                 $scope.testinfo= JSON.parse(response.result);
-                alert($testinfo.testingtype);
+                //alert($testinfo.testingtype);
             }).error(function(error){
                 alert("ERROR VIEWING PROCESS REQUEST");
             });
         };
         $scope.customerinfo();
 
+        $scope.sendrequest = function () {
 
-        $scope.processfetch = function(process) {
-
-
-            //alert("Test process id after processfetch");
-            alert(process.process_id);
-            //var in_processid= $scope.process.process_id;
-
-            //("Test process id:" + in_processid);
-            //console.log("Test process id after");
+            //alert("inside send request");
             $http({
                 method: 'POST',
-                url: '/processfetch',
-                data: {"processid": process.process_id}
-            }).success(function(response){
-                // alert("yay");
-                $window.location.href='/processview';
-            }).error(function(error){
-                alert("ERROR VIEWING PROCESS REQUEST");
+                url: '/sendrequest'
+            }).then(function (response) {
+                $window.location.href = '/searchcustomer';
+
             });
         };
 

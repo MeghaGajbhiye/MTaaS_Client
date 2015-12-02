@@ -213,7 +213,7 @@
             $http({
                 method: 'POST',
                 url: '/processfetch',
-                data: {"processid": process.process_id}
+                data: {"processid": process.customer_username}
             }).success(function(response){
                 // alert("yay");
                 $window.location.href='/processview';

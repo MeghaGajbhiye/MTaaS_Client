@@ -104,9 +104,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="process in processes | filter: search" class="even gradeC">
+                            <tr ng-repeat="process in processes | filter: search" | class="even gradeC">
 
-                                <td>{{process.username}}</td>
+                                <td ng-init="processfetch(process)">{{process.username}}</td>
                                 <td>{{process.testing_type}}</td>
                                 <td>{{process.testing_tool}}</td>
                                 <td>{{process.coding_language}}</td>
@@ -176,10 +176,13 @@
         }
         $scope.sendrequest2 = function () {
 
+            var in_tname= $scope.process.username;
+            alert("selected" + in_tname);
             //alert("inside send request");
             $http({
                 method: 'POST',
-                url: '/sendrequest2'
+                url: '/sendrequest2',
+                data: {"tname":in_tname}
             }).then(function (response) {
                 $window.location.href = '/customerdashboard';
 
@@ -217,7 +220,7 @@
        // $scope.customerinfo();
 */
 
-        $scope.processfetch = function(process) {
+        $scope.processfetch1 = function(process) {
 
 
             //alert("Test process id after processfetch");
@@ -228,8 +231,8 @@
             //console.log("Test process id after");
             $http({
                 method: 'POST',
-                url: '/processfetch',
-                data: {"processid": process.process_id}
+                url: '/processfetch1',
+                data: {"tname": process.username}
             }).success(function(response){
                 // alert("yay");
                 $window.location.href='/processview';

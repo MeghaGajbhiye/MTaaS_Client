@@ -204,6 +204,44 @@ MtaasRouteConfig.prototype.addRoutes = function () {
         }
     });
 
+    self.routeTable.push({
+
+        requestType : 'get',
+        requestUrl : '/app_status',
+        callbackFunction : function (request, response) {
+
+            response.render('app_status', { title : "Testify Conatct" });
+        }
+    });
+
+
+    self.routeTable.push({
+
+        requestType : 'get',
+        requestUrl : '/testerinfo_rate',
+        callbackFunction : function (request, response) {
+
+            response.render('testerinfo_rate', { title : "Testify Conatct" });
+        }
+    });
+    self.routeTable.push({
+
+        requestType : 'get',
+        requestUrl : '/currentapplist_customer',
+        callbackFunction : function (request, response) {
+
+            response.render('currentapplist_customer', { title : "Testify Conatct" });
+        }
+    });
+    self.routeTable.push({
+
+        requestType : 'get',
+        requestUrl : '/customer_pay',
+        callbackFunction : function (request, response) {
+
+            response.render('customer_pay', { title : "Testify Conatct" });
+        }
+    });
 }
 
 module.exports = MtaasRouteConfig;

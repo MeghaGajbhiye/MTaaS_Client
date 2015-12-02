@@ -81,7 +81,7 @@
 
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner">
-                        <div class="container" ng-repeat="t in tester">
+                        <div class="container" ng-repeat="t in customer">
                             <div class="row">
                                 <div class="col-sm-3" >
                                     <div class="panel panel-primary" >
@@ -112,22 +112,14 @@
 
                                     <div class="panel panel-primary">
                                         <div class="panel-heading">
-                                            <h4 class="text-center">Performance Summary</h4>
+                                            <h4 class="text-center">Rate Tester</h4>
                                         </div>
                                         <div class="panel-body text-center">
                                             <p class="lead">
-                                                <strong>Ratings:</strong>
+                                                <strong><a href=/testerinfo_rate>Tester Info</a></strong>
                                             </p>
                                         </div>
-                                        <ul class="list-group list-group-flush">
-                                            <li class="list-group-item liitem"><strong>Manager Average Rating:</strong>
-                                                <span class="pull-right">{{t.manager_rating}}</span>
-                                            </li>
-                                            <li class="list-group-item liitem"><strong>Customer Average Rating:</strong>
-                                                <span class="pull-right">{{t.customer_rating}}</span>
-                                            </li>
 
-                                        </ul>
 
                                     </div>
 
@@ -179,23 +171,23 @@
 
                                     <div class="panel panel-primary" style="height: 450px;width: 550px">
                                         <div class="panel-heading">
-                                            <h4 class="text-center">Suggested app for testing</h4>
+                                            <h4 class="text-center">Suggested tester</h4>
                                         </div>
                                         <div class="panel-body text-center" >
                                             <table class="table table-striped table-bordered table-hover" id="dataTables-example">
                                                 <thead>
                                                 <tr class="success">
                                                     <th>Index</th>
-                                                    <th>Customer Name</th>
-                                                    <th>App Name</th>
+                                                    <th>Tester Name</th>
+
 
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr ng-repeat="a in appinfo">
+                                                <tr ng-repeat="a in testinfo">
                                                     <td>{{index+1}}.</td>
-                                                    <td><a href=/workingenvironment target="_blank">{{a.customer_username}}</a></td>
-                                                    <td>{{a.app_name}}</td>
+                                                    <td><a href=/testerinfo  target="_blank">{{a.username}}</a></td>
+
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -226,16 +218,16 @@
                                                 <thead>
                                                 <tr class="success">
                                                     <th>Index</th>
-                                                    <th>Customer Name</th>
                                                     <th>App Name</th>
+                                                    <th>Status</th>
 
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr ng-repeat="c in currentapp_customer">
                                                     <td>{{index+1}}.</td>
-                                                    <td><a href=/workingenvironment target="_blank">{{c.tester_username}}</a></td>
                                                     <td>{{c.app_name}}</td>
+                                                    <td>{{c.status}}</td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -249,7 +241,7 @@
 
                                     <div class="panel panel-primary">
                                         <div class="panel-heading">
-                                            <h4 class="text-center">Testing History</h4>
+                                            <h4 class="text-center">Pay: </h4>
                                         </div>
 
 
@@ -257,7 +249,7 @@
                                             <thead>
                                             <tr class="success">
                                                 <th>Index</th>
-                                                <th>Customer Name</th>
+                                                <th>Amount to pay</th>
                                                 <th>App Name</th>
 
                                             </tr>
@@ -265,7 +257,7 @@
                                             <tbody>
                                             <tr ng-repeat="t in testedapp">
                                                 <td>{{index+1}}.</td>
-                                                <td><a href=/workingenvironment target="_blank">{{t.customer_username}}</a></td>
+                                                <td><a href="/customer_pay" target="_blank">${{t.estimated_cost}}</a></td>
                                                 <td>{{t.app_name}}</td>
                                             </tr>
                                             </tbody>
@@ -340,10 +332,10 @@
 
 
 
-        $scope.testedapp = function() {
+        $scope.testedapp1 = function() {
             $http({
                 method: 'GET',
-                url: '/testedapp'
+                url: '/testedapp1'
             }).success(function(response){
                 alert("testedapp: **********************************" + JSON.stringify(response));
                 $scope.testedapp= JSON.parse(response.result);
@@ -352,22 +344,21 @@
                 alert("ERROR VIEWING PROCESS REQUEST");
             });
         };
-        $scope.testedapp();
+        $scope.testedapp1();
+$scope.testerinfo2=function(){
+    $http({
+        method: 'GET',
+        url: '/testerinfo2'
+    }).success(function(response){
+        alert("testinfo ******************************" + JSON.stringify(response));
+        $scope.testinfo= JSON.parse(response.result);
+        //alert(processes.suppliername);
+    }).error(function(error){
+        alert("ERROR VIEWING PROCESS REQUEST");
+    });
 
-
-        $scope.appinfo = function() {
-            $http({
-                method: 'GET',
-                url: '/appinfo'
-            }).success(function(response){
-                alert("Appinfo ******************************" + JSON.stringify(response));
-                $scope.appinfo= JSON.parse(response.result);
-                //alert(processes.suppliername);
-            }).error(function(error){
-                alert("ERROR VIEWING PROCESS REQUEST");
-            });
-        };
-        $scope.appinfo();
+}
+$scope.testerinfo2();
 
 
         $scope.currentapp_customer = function() {
@@ -385,21 +376,21 @@
         $scope.currentapp_customer();
 
 
-        $scope.testerinfo = function() {
+        $scope.customerinfo2 = function() {
             alert("I am inside testerinfo");
 
             $http({
                 method: 'GET',
-                url: '/testerinfo',
+                url: '/customerinfo2'
             }).success(function(response){
                 alert(JSON.stringify(response));
-                $scope.tester= JSON.parse(response.result);
+                $scope.customer= JSON.parse(response.result);
                 //alert(processes.suppliername);
             }).error(function(error){
                 alert("ERROR VIEWING PROCESS REQUEST");
             });
         };
-        $scope.testerinfo();
+        $scope.customerinfo2();
 
     }]);
 </script>

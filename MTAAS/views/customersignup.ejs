@@ -134,11 +134,11 @@
                                                     </div>
                                                     <div class="checkbox">
                                                         <label><input type="checkbox" name="usability"
-                                                                      ng-model="testing.usability" ng-true-value="'usability'" ng-false-value="''"/>Usability</label>
+                                                                      ng-model="testing.usability" ng-true-value="'usability'" ng-false-value="''" ng-click="cost(100,$event)"/>Usability</label>
                                                     </div>
                                                     <div class="checkbox">
                                                         <label><input type="checkbox" name="security"
-                                                                      ng-model="testing.security" ng-true-value="'security'" ng-false-value="''"/>Security</label>
+                                                                      ng-model="testing.security" ng-true-value="'security'" ng-false-value="''" ng-click="cost(100,$event)"/>Security</label>
                                                     </div>
 
                                                     <!--br><br>
@@ -387,6 +387,17 @@
             }
 
 
+            if (in_urgency<10 && in_testcases<50){
+                in_estimatedCost=in_estimatedCost+.2*in_estimatedCost;
+                alert("in_estimatedCost" +in_estimatedCost);
+            }
+            if (in_urgency<10 && in_testcases>50){
+                in_estimatedCost=in_estimatedCost+.3*in_estimatedCost;
+                alert("in_estimatedCost"+ in_estimatedCost);
+            }
+
+
+
 
             $http({
 
@@ -439,7 +450,7 @@
                // $scope.cost(tests_cost,$event);
                 $scope.dollarAmmount = $scope.dollarAmmount + tests_cost;
                 $scope.annualCost = "$" + $scope.dollarAmmount + ".00";
-                return $scope.annualCost;
+                return $scope.dollarAmmount;
             }
         };
 
