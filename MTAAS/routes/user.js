@@ -1055,9 +1055,9 @@ exports.developersignup = function(req, res) {
 exports.sendrequest2 = function(req, res){
 
 	console.log("Entry successfullymade in sendrequest2");
-	var tester_name=req.param("tname");
 
-	var myquery = "update app_info set customer_request = concat(customer_request, ' "+tester_name+"') where customer_username = '"+req.session.uname+"";
+
+	var myquery = "update app_info set customer_request = concat(customer_request, ' "+tester_search+"') where customer_username = '"+req.session.uname+"";
 
 	mysql.fetchData(function(err, results) {
 		if (err) {

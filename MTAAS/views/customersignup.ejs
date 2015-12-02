@@ -410,11 +410,11 @@
 
             if (in_urgency<10 && in_testcases<50){
                 in_estimatedCost=in_estimatedCost+.2*in_estimatedCost;
-                alert("in_estimatedCost" +in_estimatedCost);
+            //    alert("in_estimatedCost" +in_estimatedCost);
             }
             if (in_urgency<10 && in_testcases>50){
                 in_estimatedCost=in_estimatedCost+.3*in_estimatedCost;
-                alert("in_estimatedCost"+ in_estimatedCost);
+            //    alert("in_estimatedCost"+ in_estimatedCost);
             }
 
 
@@ -464,10 +464,10 @@
 
         $scope.cost_testcases=function(test){
           var tests_cost=0;
-            alert("inside cost_testcases" + test);
+        //    alert("inside cost_testcases" + test);
             if(test>50){
              tests_cost=(test-50)*3;
-                alert("inside cost_testcases cost value" + tests_cost);
+         //       alert("inside cost_testcases cost value" + tests_cost);
                // $scope.cost(tests_cost,$event);
                 $scope.dollarAmmount = $scope.dollarAmmount + tests_cost;
                 $scope.annualCost = "$" + $scope.dollarAmmount + ".00";

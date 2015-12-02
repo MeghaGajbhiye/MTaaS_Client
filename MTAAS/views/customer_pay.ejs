@@ -187,7 +187,7 @@
                 method: 'GET',
                 url: '/customerinfo'
             }).success(function(response){
-                alert(JSON.stringify(response));
+              //  alert(JSON.stringify(response));
                 $scope.testinfo= JSON.parse(response.result);
                 //alert($testinfo.testingtype);
             }).error(function(error){

@@ -328,7 +328,7 @@
     var app=angular.module('MtaaS', []);
     app.controller('MtaaS1', ['$scope', '$http', '$window', function ( $scope,$http,$window)
     {
-        alert("i am inside controller");
+       // alert("i am inside controller");
 
 
 
@@ -337,7 +337,7 @@
                 method: 'GET',
                 url: '/testedapp1'
             }).success(function(response){
-                alert("testedapp: **********************************" + JSON.stringify(response));
+               // alert("testedapp: **********************************" + JSON.stringify(response));
                 $scope.testedapp= JSON.parse(response.result);
                 //alert(processes.suppliername);
             }).error(function(error){
@@ -350,7 +350,7 @@ $scope.testerinfo2=function(){
         method: 'GET',
         url: '/testerinfo2'
     }).success(function(response){
-        alert("testinfo ******************************" + JSON.stringify(response));
+    //    alert("testinfo ******************************" + JSON.stringify(response));
         $scope.testinfo= JSON.parse(response.result);
         //alert(processes.suppliername);
     }).error(function(error){
@@ -366,7 +366,7 @@ $scope.testerinfo2();
                 method: 'GET',
                 url: '/currentapp_customer'
             }).success(function(response){
-                alert("curfrentapp customer****************************************************************" + JSON.stringify(response));
+              //  alert("curfrentapp customer****************************************************************" + JSON.stringify(response));
                 $scope.currentapp_customer= JSON.parse(response.result);
                 //alert(processes.suppliername);
             }).error(function(error){
@@ -377,13 +377,13 @@ $scope.testerinfo2();
 
 
         $scope.customerinfo2 = function() {
-            alert("I am inside testerinfo");
+     //       alert("I am inside testerinfo");
 
             $http({
                 method: 'GET',
                 url: '/customerinfo2'
             }).success(function(response){
-                alert(JSON.stringify(response));
+             //   alert(JSON.stringify(response));
                 $scope.customer= JSON.parse(response.result);
                 //alert(processes.suppliername);
             }).error(function(error){

@@ -172,7 +172,7 @@
                 method: 'GET',
                 url: '/currentapp_customer'
             }).success(function(response){
-                alert("curfrentapp customer****************************************************************" + JSON.stringify(response));
+                //alert("curfrentapp customer****************************************************************" + JSON.stringify(response));
                 $scope.currentapp_customer= JSON.parse(response.result);
                 //alert(processes.suppliername);
             }).error(function(error){
@@ -186,9 +186,9 @@
                 method: 'GET',
                 url: '/customerinfo'
             }).success(function(response){
-                alert(JSON.stringify(response));
+                //alert(JSON.stringify(response));
                 $scope.testinfo= JSON.parse(response.result);
-                alert($testinfo.testingtype);
+                //alert($testinfo.testingtype);
             }).error(function(error){
                 alert("ERROR VIEWING PROCESS REQUEST");
             });
@@ -200,7 +200,7 @@
 
 
             //alert("Test process id after processfetch");
-            alert(process.process_id);
+            //alert(process.process_id);
             //var in_processid= $scope.process.process_id;
 
             //("Test process id:" + in_processid);

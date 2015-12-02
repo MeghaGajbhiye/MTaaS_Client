@@ -146,10 +146,10 @@
     var app=angular.module('MtaaS', []);
     app.controller('MtaaS1', ['$scope', '$http', '$window', function ( $scope,$http,$window)
     {
-        alert("I am in controller");
+    //    alert("I am in controller");
         $scope.processfetch = function()
         {
-            alert("test process fetch:" + $scope.process.id);
+    //        alert("test process fetch:" + $scope.process.id);
         }
 
         $scope.customerdetails = function() {
@@ -171,7 +171,7 @@
 
 
             //alert("Test process id after processfetch");
-            alert(process.process_id);
+     //       alert(process.process_id);
             //var in_processid= $scope.process.process_id;
 
             //("Test process id:" + in_processid);

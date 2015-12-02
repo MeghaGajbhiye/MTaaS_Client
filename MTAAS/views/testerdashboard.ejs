@@ -340,7 +340,7 @@
     var app=angular.module('MtaaS', ['chart.js']);
     app.controller('MtaaS1', ['$scope', '$http', '$window', function ( $scope,$http,$window)
     {
-        alert("i am inside controller");
+     //   alert("i am inside controller");
 
 
 
@@ -349,7 +349,7 @@
                 method: 'GET',
                 url: '/testedapp'
             }).success(function(response){
-                alert("testedapp: **********************************" + JSON.stringify(response));
+        //        alert("testedapp: **********************************" + JSON.stringify(response));
                 $scope.testedapp= JSON.parse(response.result);
                 //alert(processes.suppliername);
             }).error(function(error){
@@ -364,7 +364,7 @@
                 method: 'GET',
                 url: '/appinfo'
             }).success(function(response){
-                alert("Appinfo ******************************" + JSON.stringify(response));
+      //          alert("Appinfo ******************************" + JSON.stringify(response));
                 $scope.appinfo= JSON.parse(response.result);
                 //alert(processes.suppliername);
             }).error(function(error){
@@ -379,7 +379,7 @@
                 method: 'GET',
                 url: '/currentapp'
             }).success(function(response){
-                alert(JSON.stringify(response));
+    //            alert(JSON.stringify(response));
                 $scope.currentapp= JSON.parse(response.result);
                 //alert(processes.suppliername);
             }).error(function(error){
@@ -390,13 +390,13 @@
 
 
         $scope.testerinfo = function() {
-        alert("I am inside testerinfo");
+    //    alert("I am inside testerinfo");
 
             $http({
                 method: 'GET',
                 url: '/testerinfo',
             }).success(function(response){
-                alert(JSON.stringify(response));
+         //       alert(JSON.stringify(response));
                 $scope.tester= JSON.parse(response.result);
                 //alert(processes.suppliername);
             }).error(function(error){

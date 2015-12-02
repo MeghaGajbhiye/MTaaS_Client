@@ -354,7 +354,7 @@
     var app=angular.module('MtaaS', [])
     app.controller('MtaaS', ['$scope', '$http', '$window', function ( $scope,$http,$window)
     {
-        alert("I am in controller");
+     //   alert("I am in controller");
         var in_name;
         var in_phone;
         var in_email;
@@ -378,9 +378,9 @@
         //Tester Sign up function
 
         $scope.signup = function () {
-            alert("I am in signup function");
+     //       alert("I am in signup function");
             in_name = $scope.name;
-            alert(in_name);
+      //      alert(in_name);
             in_phone = $scope.phone;
             in_email = $scope.email;
             in_fname = $scope.fname;
@@ -456,14 +456,14 @@
         };
 
         $scope.testerdetail = function () {
-            alert("I am in testerdetail");
+     //       alert("I am in testerdetail");
             in_experience= $scope.experience;
             in_functional = $scope.testing.functional;
             in_unit = $scope.testing.unit;
             in_testing = in_functional.concat(in_unit, $scope.testing.performance, $scope.testing.usability, $scope.testing.security);
             in_tool = $scope.testing.toolA.concat($scope.testing.toolB, $scope.testing.toolC);
             in_language = $scope.testing.english.concat($scope.testing.french, $scope.testing.spanish);
-            alert(in_language);
+      //      alert(in_language);
 
             if (in_experience == null || in_experience == "") {
                 in_experience = 0;

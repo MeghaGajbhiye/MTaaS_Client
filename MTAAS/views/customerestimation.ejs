@@ -319,7 +319,7 @@
     var app=angular.module('MtaaS', [])
     app.controller('MtaaS', ['$scope', '$http', '$window', function ( $scope,$http,$window)
     {
-        alert("I am in controller");
+       // alert("I am in controller");
 
         $scope.save_customer = function () {
 
@@ -339,7 +339,7 @@
             });
 
         }
-        alert("I am in controller");
+    //    alert("I am in controller");
         $scope.testing = {
             functional: '',
             unit : '',
@@ -358,22 +358,22 @@
         };
 
         $scope.Appdetail = function () {
-            alert("I am in Appdetail");
+     //       alert("I am in Appdetail");
             var in_applicationName= $scope.applicationName;
             console.log(in_applicationName);
             var in_functional = $scope.testing.functional;
-            alert(in_functional);
+    //        alert(in_functional);
             var in_unit = $scope.testing.unit;
             //  var in_testing = in_functional.concat(in_unit, $scope.testing.performance, $scope.testing.usability, $scope.testing.security);
             var in_testing =in_functional +" "+ in_unit+" "+$scope.testing.performance+" "+ $scope.testing.usability+ " "+ $scope.testing.security;
-            alert(in_testing);
+      //      alert(in_testing);
             var in_tool = $scope.testing.toolA+" "+ $scope.testing.toolB+" "+ $scope.testing.toolC;
             console.log(in_tool);
             var in_language = $scope.testing.english+" "+$scope.testing.french+" "+ $scope.testing.spanish;
             var in_codinglanguage = $scope.testing.java+" "+$scope.testing.javascript+" "+ $scope.testing.ruby;
             var in_urgency= $scope.days;
             var in_testcases= $scope.testcases;
-            alert(in_codinglanguage);
+   //         alert(in_codinglanguage);
 
             $http({
 
@@ -384,7 +384,7 @@
             then(function (response) {
                 $window.location.href = '/';
             });
-            alert("I am in post appdetail");
+      //      alert("I am in post appdetail");
 
         }
         $scope.bankdetail = function () {
@@ -402,7 +402,7 @@
             then(function (response) {
                 $window.location.href = '/';
             });
-            alert("I am in post bankdetail");
+    //        alert("I am in post bankdetail");
         }
     }
 
