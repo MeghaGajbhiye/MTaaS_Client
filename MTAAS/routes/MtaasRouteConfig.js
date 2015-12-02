@@ -67,6 +67,8 @@ MtaasRouteConfig.prototype.addRoutes = function () {
         }
     });
 
+
+
     self.routeTable.push({
 
         requestType : 'get',
@@ -192,7 +194,15 @@ MtaasRouteConfig.prototype.addRoutes = function () {
         }
     });
 
+    self.routeTable.push({
 
+        requestType : 'get',
+        requestUrl : '/contact',
+        callbackFunction : function (request, response) {
+
+            response.render('contact', { title : "Testify Conatct" });
+        }
+    });
 
 }
 
