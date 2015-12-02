@@ -8,7 +8,7 @@ var express = require('express')
   , user = require('./routes/user')
   , http = require('http')
   , path = require('path')
-,serveStatic=require('server-static');
+,serveStatic=require('serve-static');
 //,serveStatic=require('serve-static');
 
 var app = express();
