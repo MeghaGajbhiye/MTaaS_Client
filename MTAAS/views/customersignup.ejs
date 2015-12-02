@@ -13,7 +13,9 @@
 
     <!-- Bootstrap Core CSS -->
     <!-- link href="css/bootstrap.min.css" rel="stylesheet" -->
-
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/business-casual.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="views/css/business-casual.css" rel="stylesheet">
 
@@ -324,7 +326,7 @@
 
             };
 
-        alert("I am in controller");
+
 
         $scope.save_customer = function () {
 
@@ -344,7 +346,7 @@
             });
 
         }
-        alert("I am in controller");
+
         $scope.testing = {
             functional: '',
             unit : '',
@@ -363,7 +365,7 @@
         };
 
         $scope.Appdetail = function () {
-            alert("I am in Appdetail");
+
             var in_applicationName= $scope.applicationName;
 
             var in_functional = $scope.testing.functional;
@@ -426,7 +428,7 @@
             then(function (response) {
                 $window.location.href = '/customerdashboard';
             });
-            alert("I am in post bankdetail");
+
         }
 
         /*var maxValidator = function (testcases) {
