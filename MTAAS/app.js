@@ -15,7 +15,7 @@ app.use(express.cookieParser());
 app.use(express.session({secret:'Mtaas',duration:30*60*1000}));
 
 // all environments
-app.set('port', process.env.PORT || 3044);
+app.set('port', process.env.PORT || 3046);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
@@ -23,7 +23,7 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 app.use(express.methodOverride());
 app.use(app.router);
-//app.use('/public/',serveStatic(__dirname+'/public/'));
+app.use('/public/',serveStatic(__dirname+'/public/'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only

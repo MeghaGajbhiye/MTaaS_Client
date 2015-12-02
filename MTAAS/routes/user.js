@@ -466,6 +466,10 @@ exports.customerview = function(req, res) {
 	res.render('customerview');
 };
 
+exports.contact = function(req, res) {
+	res.render('contact');
+};
+
 
 //cutsomer signup
 exports.customersignup = function(req, res) {
